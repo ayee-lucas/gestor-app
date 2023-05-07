@@ -1,5 +1,6 @@
 import dbConnect from "@/app/utils/DatabaseConnection";
 import User from "@/app/models/User";
+import JWT from "@/app/utils/jwt";
 import { NextRequest, NextResponse } from "next/server";
 import { decryptPassword } from "@/app/utils/PasswordValidate";
 
@@ -17,9 +18,9 @@ export async function POST(request: NextRequest) {
       password: json.password,
     };
 
-    const user = await User.findOne({ username: crendentials.username });
+    const userFinded = await User.findOne({ username: crendentials.username });
 
-    if (!user) {
+    if (!userFinded) {
       return new NextResponse(
         JSON.stringify({
           status: "404",
@@ -28,19 +29,37 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const passwordIsValid = decryptPassword(
-      user.password,
-      crendentials.password
+    const passwordIsValid = await decryptPassword(
+      crendentials.password,
+      userFinded.password,
     );
 
     if (!passwordIsValid) {
       return new NextResponse(
         JSON.stringify({
           status: "401",
-          message: "Password is invalid",
+          message: "Wrong password",
         })
       );
     }
+
+    const token = await JWT(userFinded);
+
+    const userLogged = {
+      id: userFinded._id,
+      username: userFinded.username,
+      role: userFinded.role,
+    }
+
+    console.log({userLogged: userLogged, token: token,})
+
+    return new NextResponse(
+      JSON.stringify({
+        message: "Success",
+        token: token,
+        status: "200",
+      })
+    );
   } catch (err) {
     console.log(err);
     return new NextResponse(
