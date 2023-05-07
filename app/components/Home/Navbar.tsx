@@ -1,24 +1,41 @@
+'use client'
+
 import React from "react";
+import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 const Navbar = () => {
+  const { data: session } = useSession();
+
   return (
     <nav className="bg-white fixed top-0 left-0 w-full z-50 border-gray-200  dark:bg-gray-900">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href={"/"} className="flex items-center">
-
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
             BookFly
           </span>
         </Link>
         <div className="flex md:order-2">
-          <Link href={"/account/login"}
-            type="button"
-            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          >
-            Get started
-          </Link>
-       </div>
+          {session?.user ? (
+            <Link
+              href={"/account/login"}
+              type="button"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={() => signOut()}
+            >
+              Logout
+            </Link>
+          ) : (
+            <Link
+              href={"/account/login"}
+              type="button"
+              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-3 md:mr-0 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              onClick={() => signIn()}
+            >
+              Get started
+            </Link>
+          )}
+        </div>
         <div
           className="items-center justify-between hidden w-full md:flex md:w-auto md:order-1"
           id="navbar-cta"

@@ -1,7 +1,27 @@
+'use client'
+
 import SideArt from "@/app/components/Login/SideArt";
+import { signIn } from "next-auth/react";
+import { useRef } from "react";
 import { BiFace, BiKey } from "react-icons/bi";
 
 export default function Login() {
+
+  const userName = useRef('')
+  const pass = useRef('')
+
+  const onSubmit = async () => {
+    const result = await signIn('credentials', {
+      username: userName.current,
+      password: pass.current,
+      redirect: true,
+      callbackUrl:"/dashboard"
+    })
+    
+  }
+
+
+
   return (
     <div className="h-screen md:flex">
       <SideArt />
@@ -17,8 +37,8 @@ export default function Login() {
             <input
               className="pl-2 outline-none border-none"
               type="text"
-              name=""
-              id=""
+              name="username"
+              onChange={(e) => userName.current = e.target.value}
               placeholder="Username"
             />
           </div>
@@ -27,14 +47,15 @@ export default function Login() {
             <input
               className="pl-2 outline-none border-none"
               type="text"
-              name=""
-              id=""
+              name="password"
+              onChange={(e) => pass.current = e.target.value}
               placeholder="Password"
             />
           </div>
           <button
             type="submit"
             className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
+            onClick={onSubmit}
           >
             Login
           </button>
