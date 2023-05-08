@@ -1,10 +1,13 @@
-import Title from "./components/Presentation/Title"
+import React from "react"
+import Hero from "./components/Presentation/Hero"
+import Start from "./components/Presentation/Start"
 
 
 export default function Presentation() {
   return (
-    <main className="flex flex-col justify-center items-center h-screen w-full bg-indigo-950 text-white">
-      <Title title="Gestor de Hoteles" button="Home" />
+    <main className="">
+      <Start/>
+      <Hero/>
     </main>
   )
 }
