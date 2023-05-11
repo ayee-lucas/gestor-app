@@ -6,7 +6,6 @@ export interface IService {
     serviceName: string;
     description: string;
     price: number;
-    availability: boolean;
     createdAt: Date;
 }
 
