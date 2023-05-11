@@ -1,4 +1,4 @@
-import jwt from "jsonwebtoken";
+import jwt, { JwtPayload } from "jsonwebtoken";
 
 export interface IUserToken {
     id: string;
@@ -10,7 +10,7 @@ export interface IUserToken {
     exp: number;
 }
 
-export default async function JWT(user: IUserToken) {
+export async function JWT(user: IUserToken) {
   try {
     const payload = {
       uui: user.id,
@@ -29,3 +29,13 @@ export default async function JWT(user: IUserToken) {
     return error;
   }
 }
+
+export async function verifyJWT(token: string) {
+  try {
+    const decoded = jwt.verify(token, `${process.env.NEXTAUTH_SECRET}`);
+    return decoded as JwtPayload;
+  } catch (error) {
+    console.log(error);
+    return error;
+  }
+} 

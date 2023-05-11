@@ -4,56 +4,63 @@ import CredentialsProvider from "next-auth/providers/credentials";
 
 dbConnect();
 
+const url = process.env.NEXTAUTH_URL as string;
+
+console.log({ nextauth: `${url}api/User/login}` });
 
 const handler = NextAuth({
   providers: [
     CredentialsProvider({
+      // The name to display on the sign in form (e.g. 'Sign in with...')
       name: "Credentials",
-
+      // The credentials is used to generate a suitable form on the sign in page.
+      // You can specify whatever fields you are expecting to be submitted.
+      // e.g. domain, username, password, 2FA token, etc.
+      // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        username: {
-          label: "Username",
-          type: "text",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-        },
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        console.log({
-          datafetched: { credentials },
-        });
-
-        const { username, password } = credentials as any;
-
-        console.log({ username, password });
-
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/User/login}`, {
+        // You need to provide your own logic here that takes the credentials
+        // submitted and returns either a object representing a user or value
+        // that is false/null if the credentials are invalid.
+        // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
+        // You can also use the `req` object to obtain additional parameters
+        // (i.e., the request IP address)
+        const res = await fetch("http://localhost:3000/api/User/login", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           body: JSON.stringify({
-            username,
-            password,
+            username: credentials?.username,
+            password: credentials?.password,
           }),
+          headers: { "Content-Type": "application/json" },
         });
-
 
         const user = await res.json();
 
-        console.log({ user });
-
-        if (res.ok && user) {
+        // If no error and we have user data, return it
+        if (res.status === 200 && user) {
           return user;
-        } else return null;
+        }
+        // Return null if user data could not be retrieved
+        return null;
       },
     }),
   ],
-
   pages: {
     signIn: "/account/login",
+  },
+
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+
+    async session({session, token}){
+      session.user = token as any;
+      return session;
+    }
   },
 });
 

@@ -1,23 +1,34 @@
 "use client";
 
 import SideArt from "@/app/components/Login/SideArt";
+import TextBox from "@/app/elements/TextBox";
+import Button from "@/app/elements/Button";
+import { useSession } from "next-auth/react";
+import { useRouter } from 'next/navigation';
 import { signIn } from "next-auth/react";
 import { useRef } from "react";
 import { BiFace, BiKey } from "react-icons/bi";
 
-export default function Login() {
-  const userName = useRef('');
-  const pass = useRef('');
+export default  function Login() {
 
-  console.log({env: `${process.env.NEXTAUTH_URL}api/User/login` });
+  
+
+  const userName = useRef("");
+  const pass = useRef("");
+
+  const { status } = useSession();
+
+  if (status === "authenticated") {
+  }
+
+  console.log({ env: `${process.env.NEXTAUTH_URL}api/User/login` });
 
   const onSubmit = async () => {
-
     const result = await signIn("credentials", {
       username: userName.current,
       password: pass.current,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: "/dashboard",
     });
 
   };
@@ -33,31 +44,22 @@ export default function Login() {
 
           <div className="flex items-center border-2 py-2 px-10 rounded-2xl mb-4">
             <BiFace className="text-gray-600" />
-            <input
-              className="pl-2 outline-none border-none"
-              type="text"
-              name="username"
+            <TextBox
+              labelText="Username"
               onChange={(e) => (userName.current = e.target.value)}
-              placeholder="Username"
             />
           </div>
-          <div className="flex items-center border-2 py-2 px-10 rounded-2xl">
+          <div className="flex items-center border-2 py-2 px-10 rounded-2xl mb-4">
             <BiKey className="text-gray-600" />
-            <input
-              className="pl-2 outline-none border-none"
-              type="text"
-              name="password"
+            <TextBox
+              labelText="Password"
+              type={"password"}
               onChange={(e) => (pass.current = e.target.value)}
-              placeholder="Password"
             />
           </div>
-          <button
-            type="submit"
-            className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
-            onClick={onSubmit}
-          >
-            Login
-          </button>
+
+          <Button onClick={onSubmit}>Login</Button>
+
           <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">
             Forgot Password ?
           </span>
