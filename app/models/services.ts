@@ -3,7 +3,7 @@
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IService {
-    serviceName: string;
+    name: string;
     description: string;
     price: number;
     createdAt: Date;
@@ -12,7 +12,7 @@ export interface IService {
 export interface IServiceModel extends IService, Document { }
 
 const serviceSchema = new Schema({
-    serviceName: {
+    name: {
         type: String,
         required: [true, "Service name is required."],
     },
