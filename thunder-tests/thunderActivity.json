@@ -22,14 +22,28 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-05-06T12:57:46.877Z",
-    "modified": "2023-05-07T05:37:23.767Z",
+    "modified": "2023-05-11T06:41:00.931Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"username\": \"parmas\",\n  \"password\": \"123\"\n}",
+      "raw": "{\n  \"username\": \"alopesz\",\n  \"password\": \"\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "f0516a4d-826d-4ee0-a178-61e69d60f046",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/api/auth/providers",
+    "url": "http://localhost:3000/api/auth/providers",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-11T02:37:14.622Z",
+    "modified": "2023-05-11T02:37:14.622Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]
