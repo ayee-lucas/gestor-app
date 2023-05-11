@@ -13,6 +13,12 @@ body{
 	margin: 0;
 }
 
-.bg-image{
+.bg-start{
 	background-image: url('https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80');
+}
+
+.gradient{
+	background: rgb(2,0,36);
+	background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(0,0,0,1) 20%, rgba(1,1,1,0.8883928571428571) 35%,
+	 rgba(1,1,1,0.7987570028011204) 52%, rgba(1,1,1,0.6951155462184874) 70%, rgba(1,1,1,0.5410539215686274) 90%);
 }
