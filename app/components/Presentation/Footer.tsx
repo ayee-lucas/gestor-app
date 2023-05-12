@@ -24,7 +24,7 @@ const Footer = () => {
                                     <button className="hover:underline">Roomify</button>
                                 </li>
                                 <li>
-                                    <button className="hover:underline">Tailwind CSS</button>
+                                    <button className="hover:underline">Hotels</button>
                                 </li>
                             </ul>
                         </div>
@@ -32,10 +32,10 @@ const Footer = () => {
                             <h2 className="mb-6 text-sm font-semibold text-gray-900 uppercase dark:text-white">Follow us</h2>
                             <ul className="text-gray-600 dark:text-gray-400 font-medium">
                                 <li className="mb-4">
-                                    <button className="hover:underline ">Github</button>
+                                    <button className="hover:underline ">Facebook</button>
                                 </li>
                                 <li>
-                                    <button className="hover:underline">Discord</button>
+                                    <button className="hover:underline">Instagram</button>
                                 </li>
                             </ul>
                         </div>
@@ -54,7 +54,7 @@ const Footer = () => {
                 </div>
                 <hr className="my-6 border-gray-500 sm:mx-auto dark:border-gray-700 lg:my-8" />
                 <div className="sm:flex sm:items-center sm:justify-between ">
-                    <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <button className="hover:underline">Flowbite™</button>. All Rights Reserved.
+                    <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2023 <button className="hover:underline">Roomfly</button>. All Rights Reserved.
                     </span>
                     <div className="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
                         <button className="text-gray-500 hover:text-gray-900 dark:hover:text-white">

@@ -35,14 +35,17 @@ body {
 }
 
 .img-toggle {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  width: 100px;
+  height: 100px;
   position: relative;
   background: url("../public/Logos/RoomFlyLogo.png") center / cover;
 }
 
 @media (prefers-color-scheme: dark){
   .img-toggle {
-    width: 100px;
-    height: 100px;
      background: url("../public/Logos/RoomFlyLogoWhiteTransparent.png") center / cover;
   }
 }
