@@ -5,7 +5,7 @@
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IRoom {
-  roomNumber: string;
+  number: string;
   type: string;
   description: string;
   price: number;
@@ -17,32 +17,21 @@ export interface IRoomModel extends IRoom, Document {}
 
 const roomSchema = new Schema(
   {
-    roomNumber: {
+    number: {
       type: String,
       required: [true, "Room number is required."],
-      unique: [true, "This room number already exists!"],
-      match: [/^[a-zA-Z0-9]+$/, "Room number must contain only letters and numbers."],
-      minlength: [3, "Room number must be at least 3 characters long."],
-      maxlength: [10, "Room number cannot exceed 10 characters."],
     },
     type: {
       type: String,
       required: [true, "Room type is required."],
-      enum: {
-        values: ["single", "double", "suite"],
-        message: "Room type must be single, double or suite.",
-      },
     },
     description: {
       type: String,
       required: [true, "Room description is required."],
-      maxlength: [500, "Room description cannot exceed 500 characters."],
     },
     price: {
       type: Number,
       required: [true, "Room price is required."],
-      min: [0, "Room price must be greater than or equal to 0."],
-      max: [1000, "Room price cannot exceed 1000."],
     },
     available: {
       type: Boolean,
