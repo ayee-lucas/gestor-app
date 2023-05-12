@@ -33,3 +33,16 @@ body {
     rgba(1, 1, 1, 0.5410539215686274) 90%
   );
 }
+
+.img-toggle {
+  position: relative;
+  background: url("../public/Logos/RoomFlyLogo.png") center / cover;
+}
+
+@media (prefers-color-scheme: dark){
+  .img-toggle {
+    width: 100px;
+    height: 100px;
+     background: url("../public/Logos/RoomFlyLogoWhiteTransparent.png") center / cover;
+  }
+}
