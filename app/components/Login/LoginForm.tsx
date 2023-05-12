@@ -1,26 +1,38 @@
 "use client";
 
 import SideArt from "@/app/components/Login/SideArt";
+import TextBox from "@/app/elements/TextBox";
+import Button from "@/app/elements/Button";
+import { usePathname, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { BiFace, BiKey } from "react-icons/bi";
 
-export default function Login() {
-  const userName = useRef('');
-  const pass = useRef('');
+export default function LoginForm() {
+  const params = useSearchParams();
 
-  console.log({env: `${process.env.NEXTAUTH_URL}api/User/login` });
+  const error = params.get("error");
 
-  const onSubmit = async () => {
+  const userName = useRef("");
+  const pass = useRef("");
 
-    const result = await signIn("credentials", {
-      username: userName.current,
-      password: pass.current,
-      redirect: true,
-      callbackUrl: "/",
-    });
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
 
+    try {
+      const result = await signIn("credentials", {
+        username: userName.current,
+        password: pass.current,
+        redirect: true,
+        callbackUrl: "/account/login",
+      });
+
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <div className="h-screen md:flex">
       <SideArt />
@@ -31,33 +43,25 @@ export default function Login() {
           </h1>
           <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
 
+          {error && <p className="text-red-500 my-7">Invalid Credentials</p>}
           <div className="flex items-center border-2 py-2 px-10 rounded-2xl mb-4">
             <BiFace className="text-gray-600" />
-            <input
-              className="pl-2 outline-none border-none"
-              type="text"
-              name="username"
+            <TextBox
+              labelText="Username"
               onChange={(e) => (userName.current = e.target.value)}
-              placeholder="Username"
             />
           </div>
-          <div className="flex items-center border-2 py-2 px-10 rounded-2xl">
+          <div className="flex items-center border-2 py-2 px-10 rounded-2xl mb-4">
             <BiKey className="text-gray-600" />
-            <input
-              className="pl-2 outline-none border-none"
-              type="text"
-              name="password"
+            <TextBox
+              labelText="Password"
+              type={"password"}
               onChange={(e) => (pass.current = e.target.value)}
-              placeholder="Password"
             />
           </div>
-          <button
-            type="submit"
-            className="block w-full bg-indigo-600 mt-4 py-2 rounded-2xl text-white font-semibold mb-2"
-            onClick={onSubmit}
-          >
-            Login
-          </button>
+
+          <Button onClick={(e) => onSubmit(e)}>Login</Button>
+
           <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">
             Forgot Password ?
           </span>
