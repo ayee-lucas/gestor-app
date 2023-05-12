@@ -30,6 +30,14 @@ export async function POST(request: NextRequest) {
         const json = await request.json();
         console.log({ DataRequest: json });
 
+        // Check if a service with the same name or description already exists
+        const existingService = await Service.findOne({
+            $or: [{ name: json.name }, { description: json.description }],
+        });
+        if (existingService) {
+            throw new Error("A service with the same name or description already exists.");
+        }
+
         // Create a new Service object with the parsed data
         const data = new Service(json);
         console.log({ ServiceCreated: data });
@@ -54,3 +62,4 @@ export async function POST(request: NextRequest) {
     return new NextResponse(JSON.stringify(error), { status: 500 });
   }
 }
+
