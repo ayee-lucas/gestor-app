@@ -9,7 +9,12 @@ export default async function SingUp() {
     }
 
     return (
-    <div className="dark:bg-indigo-950 bg-indigo-700 min-h-screen w-full">
+    <div className="min-h-screen w-full grid grid-cols-2">
+      <div className="w-full h-full "></div>
+      <div className="w-full h-full bg-indigo-700 flex flex-col justify-center items-center">
+        <h1></h1>
+
+      </div>
     </div>
   );
 
