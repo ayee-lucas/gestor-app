@@ -3,36 +3,43 @@ import React from "react";
 const Information = () => {
   return (
     <div className="h-full dark:bg-[#100724] dark:text-white ">
-
       <section className="flex w-full mb-20">
         <div className="flex items-center col-span-12 mt-10">
           <div className="flex justify-center px-10">
             <img
-              src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" className="rounded-2xl" alt=""
+              src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              className="rounded-2xl"
+              alt=""
             />
           </div>
         </div>
         <div className="col-span-12 lg:col-span-5 space-y-6 px-4 sm:px-6 mt-20">
-          <h2 className="text-5xl font-semibold">
-            Encuentra hoteles para hospedarte
-          </h2>
-          <p className="paragraph">Echa un vistazo a los hoteles disponibles alrededor del mundo</p>
-          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">Ver Hoteles</button>
+          <h2 className="text-5xl font-semibold">Find Hotels for Your Stay</h2>
+          <p className="paragraph">
+            Take a look at the available hotels around the world
+          </p>
+          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">
+            Explore
+          </button>
         </div>
       </section>
 
       <section className="flex w-full my-10">
         <div className="ml-10 col-span-12 lg:col-span-5 space-y-6 px-4 sm:px-6 mt-20">
-          <h2 className="text-5xl font-semibold">
-            Reserva una habitación
-          </h2>
-          <p className="paragraph">Busca la habitación que mejor se adapte a tus gustos y necesidades</p>
-          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">Ver Habitaciones</button>
+          <h2 className="text-5xl font-semibold">Book a Room</h2>
+          <p className="paragraph">
+            Find the room that best suits your tastes and needs
+          </p>
+          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">
+            Explore
+          </button>
         </div>
         <div className="flex items-center col-span-12">
           <div className="flex justify-center px-10">
             <img
-              src="https://images.unsplash.com/photo-1598928636135-d146006ff4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" className="rounded-2xl" alt=""
+              src="https://images.unsplash.com/photo-1598928636135-d146006ff4be?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              className="rounded-2xl"
+              alt=""
             />
           </div>
         </div>
@@ -42,48 +49,61 @@ const Information = () => {
         <div className="flex items-center col-span-12">
           <div className="flex justify-center px-10">
             <img
-              src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" className="rounded-2xl" alt=""
+              src="https://images.unsplash.com/photo-1527529482837-4698179dc6ce?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+              className="rounded-2xl"
+              alt=""
             />
           </div>
         </div>
         <div className="col-span-12 lg:col-span-5 space-y-6 px-4 sm:px-6 mt-20">
           <h2 className="text-5xl font-semibold">
-            Organiza eventos
+            Discover the Perfect Room for Your Tastes and Needs
           </h2>
-          <p className="paragraph">Planifica fiestas, reuniones o distintos tipos de eventos con nosotros</p>
-          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">Organizar Evento</button>
+          <p className="paragraph">
+            Plan Parties, Gatherings, and Events with Us
+          </p>
+          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">
+            Organize Events
+          </button>
         </div>
       </section>
 
       <section className="flex w-full my-10">
         <div className="items-center ml-10 col-span-12 lg:col-span-5 space-y-6 px-4 sm:px-6 mt-20">
-          <h2 className="text-5xl font-semibold">
-            Servicios Adicionales
-          </h2>
-          <p className="paragraph">Otros servicios que te ofrecemos para conseguir esa experiencia única que buscas</p>
-          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">Ver Servicios</button>
+          <h2 className="text-5xl font-semibold">Additional Services</h2>
+          <p className="paragraph">
+            Other services we offer to provide that unique experience you're
+            looking for
+          </p>
+          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">
+            View Services
+          </button>
         </div>
         <div className="flex items-center col-span-12">
           <div className="flex justify-center px-10">
             <img
-              src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80" className="rounded-2xl" alt=""
+              src="https://images.unsplash.com/photo-1561501900-3701fa6a0864?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
+              className="rounded-2xl"
+              alt=""
             />
           </div>
         </div>
-        
       </section>
 
-      <div className="border-t-[2px] border-separate border-[#55149e] mx-12"/>
+      <div className="border-t-[2px] border-separate border-[#55149e] mx-12" />
 
       <div className="p-10">
         <div className="md:w-2/3 lg:w-1/2 pl-3">
-
           <h2 className="my-8 text-3xl font-bold text-gray-700 dark:text-white md:text-5xl">
-            Tu mejor opción en viajes
+            Your Best Choice in Travel
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-justify">En nuestra empresa de viajes y hospedaje, brindamos experiencias únicas y
-            personalizadas. Nos encargamos de todo, desde la selección de hospedaje hasta la organización de actividades, para que nuestros
-            clientes puedan disfrutar sin preocupaciones. ¡Hacemos que cada viaje sea inolvidable!</p>
+          <p className="text-gray-600 dark:text-gray-300 text-justify">
+            Your Best Choice in Travel At our travel and lodging company, we
+            provide unique and personalized experiences. We take care of
+            everything, from selecting accommodations to organizing activities,
+            so that our clients can enjoy without worries. We make every journey
+            unforgettable!
+          </p>
         </div>
         <div className="mt-16 grid divide-x divide-y divide-gray-100 dark:divide-gray-700 overflow-hidden rounded-3xl border border-gray-100 text-gray-600 dark:border-gray-700 sm:grid-cols-2 lg:grid-cols-4 lg:divide-y-0 xl:grid-cols-4">
           <div className="group relative bg-white dark:bg-gray-900 transition hover:z-[1] hover:shadow-2xl hover:shadow-gray-600/10">
@@ -97,17 +117,19 @@ const Information = () => {
               />
 
               <div className="space-y-2">
-                <h5
-                  className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
-                >
+                <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
                   Mundial
                 </h5>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Contamos con diversidad de lugares, transportes, hospedajes y horarios para hacer de tus vacaciones
-                  una experiencia inolvidable
+                  Contamos con diversidad de lugares, transportes, hospedajes y
+                  horarios para hacer de tus vacaciones una experiencia
+                  inolvidable
                 </p>
               </div>
-              <a href="#" className="flex items-center justify-between group-hover:text-secondary">
+              <a
+                href="#"
+                className="flex items-center justify-between group-hover:text-secondary"
+              >
                 <span className="text-sm">Ver más</span>
               </a>
             </div>
@@ -123,17 +145,19 @@ const Information = () => {
               />
 
               <div className="space-y-2">
-                <h5
-                  className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
-                >
+                <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
                   Personalizable
                 </h5>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Podrás encontrar y elegir entre una gran variedad de opciones que se te hagan
-                  más cómodas o más atractivas para realizar tu viaje
+                  Podrás encontrar y elegir entre una gran variedad de opciones
+                  que se te hagan más cómodas o más atractivas para realizar tu
+                  viaje
                 </p>
               </div>
-              <a href="#" className="flex items-center justify-between group-hover:text-secondary">
+              <a
+                href="#"
+                className="flex items-center justify-between group-hover:text-secondary"
+              >
                 <span className="text-sm">Ver más</span>
               </a>
             </div>
@@ -149,17 +173,19 @@ const Information = () => {
               />
 
               <div className="space-y-2">
-                <h5
-                  className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
-                >
+                <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
                   Accesible
                 </h5>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Manejamos un rango de precios muy variado, ofreciendo distintos servicios que se adapten
-                  mejor al presupuesto que tengas en mente
+                  Manejamos un rango de precios muy variado, ofreciendo
+                  distintos servicios que se adapten mejor al presupuesto que
+                  tengas en mente
                 </p>
               </div>
-              <a href="#" className="flex items-center justify-between group-hover:text-secondary">
+              <a
+                href="#"
+                className="flex items-center justify-between group-hover:text-secondary"
+              >
                 <span className="text-sm">Ver más</span>
               </a>
             </div>
@@ -175,31 +201,29 @@ const Information = () => {
               />
 
               <div className="space-y-2">
-                <h5
-                  className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary"
-                >
+                <h5 className="text-xl font-semibold text-gray-700 dark:text-white transition group-hover:text-secondary">
                   Seguro
                 </h5>
                 <p className="text-gray-600 dark:text-gray-300">
-                  Contamos con diversas medidas de seguridad y un plan de prevención para cualquier tipo de accidente
-                  o inconveniente que pueda surgir a lo largo del viaje
+                  Contamos con diversas medidas de seguridad y un plan de
+                  prevención para cualquier tipo de accidente o inconveniente
+                  que pueda surgir a lo largo del viaje
                 </p>
               </div>
-              <a href="#" className="flex items-center justify-between group-hover:text-secondary">
+              <a
+                href="#"
+                className="flex items-center justify-between group-hover:text-secondary"
+              >
                 <span className="text-sm">Ver más</span>
               </a>
             </div>
           </div>
         </div>
-
       </div>
 
-      <div className="border-t-[2px] border-separate border-[#55149e] mx-20 mt-16"/>
-
+      <div className="border-t-[2px] border-separate border-[#55149e] mx-20 mt-16" />
     </div>
-
-
   );
-}
+};
 
 export default Information;

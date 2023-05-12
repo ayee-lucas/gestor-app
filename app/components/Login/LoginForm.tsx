@@ -1,8 +1,8 @@
 "use client";
 
 import SideArt from "@/app/components/Login/SideArt";
-import TextBox from "@/app/elements/TextBox";
-import Button from "@/app/elements/Button";
+import TextBox from "@/app/components/elements/TextBox";
+import Button from "@/app/components/elements/Button";
 import { usePathname, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useEffect, useRef } from "react";
