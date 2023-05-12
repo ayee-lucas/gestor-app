@@ -38,7 +38,8 @@ export async function POST(request: NextRequest) {
         const service = await data.save();
 
         // Return a NextResponse object with the saved service data and a 200 status code
-        return new NextResponse(JSON.stringify(service), {
+        return new NextResponse(
+            JSON.stringify(service), {
             status: 200,
             headers: { "Content-Type": "application/json" },
         });
