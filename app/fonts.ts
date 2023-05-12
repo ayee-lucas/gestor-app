@@ -1,4 +1,4 @@
-import { Montserrat, Playfair_Display } from "next/font/google";
+import { Montserrat, Playfair_Display, Inter } from "next/font/google";
 
 export const monsterrat = Montserrat({
     subsets: ['latin'],
@@ -10,3 +10,10 @@ export const playfair = Playfair_Display({
     weight: ['400', '500',  '600',],
     style: ['normal'],
 });
+
+export const inter = Inter({
+    subsets: ['latin'],
+    weight: ['400', '500',  '600',],
+    style: ['normal'],
+});
+
