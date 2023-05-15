@@ -6,6 +6,8 @@ import SignUpSide from "@/app/components/SignUp/SignUpSide";
 
 async function SignUp(data: FormData) {
   "use server";
+
+  const url = process.env.NEXTAUTH_URL as string;
   
   const name = data.get("name");
   const surname = data.get("surname");
@@ -15,7 +17,7 @@ async function SignUp(data: FormData) {
 
   console.log({ name, surname, username, email, password });
 
-  const result = await fetch("http://localhost:3000/api/User/register", {
+  const result = await fetch(`${url}/api/User/register`, {
     method: "POST",
     body: JSON.stringify({ name, surname, username, email, password }),
     headers: { "Content-Type": "application/json" },
