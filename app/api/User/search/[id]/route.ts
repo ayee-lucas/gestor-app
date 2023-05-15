@@ -1,3 +1,4 @@
+"use server";
 import dbConnect from "@/app/utils/DatabaseConnection";
 import { NextResponse } from "next/server";
 import User from "@/app/models/User";
@@ -16,13 +17,13 @@ interface params extends Request {
 
 /** params dynamic route example http://localhost:3000/api/User/search/6456d4b1c8866a13dedc5147 */
 export async function GET(request: Request, params: params) {
+  //User Logged
+
+  const session = await getServerSession(authOptions);
+
+  console.log({ userLogged: session?.user.name });
+
   try {
-    //User Logged
-
-    const session = await getServerSession(authOptions);
-
-    console.log({ userLogged: session?.user });
-
     //
 
     /** FindbyId */
