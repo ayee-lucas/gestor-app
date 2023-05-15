@@ -1,37 +1,38 @@
 "use client";
 
 import SideArt from "@/app/components/Login/SideArt";
-import TextBox from "@/app/elements/TextBox";
-import Button from "@/app/elements/Button";
-import { useSession } from "next-auth/react";
-import { useRouter } from 'next/navigation';
+import TextBox from "@/app/components/elements/TextBox";
+import Button from "@/app/components/elements/Button";
+import { usePathname, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { BiFace, BiKey } from "react-icons/bi";
 
-export default  function Login() {
+export default function LoginForm() {
+  const params = useSearchParams();
 
-  
+  const error = params.get("error");
 
   const userName = useRef("");
   const pass = useRef("");
 
-  const { status } = useSession();
+  const onSubmit = async (e: any) => {
+    e.preventDefault();
 
-  if (status === "authenticated") {
-  }
+    try {
+      const result = await signIn("credentials", {
+        username: userName.current,
+        password: pass.current,
+        redirect: true,
+        callbackUrl: "/account/login",
+      });
 
-  console.log({ env: `${process.env.NEXTAUTH_URL}api/User/login` });
-
-  const onSubmit = async () => {
-    const result = await signIn("credentials", {
-      username: userName.current,
-      password: pass.current,
-      redirect: true,
-      callbackUrl: "/dashboard",
-    });
-
+      console.log(result);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
   return (
     <div className="h-screen md:flex">
       <SideArt />
@@ -42,6 +43,7 @@ export default  function Login() {
           </h1>
           <p className="text-sm font-normal text-gray-600 mb-7">Welcome Back</p>
 
+          {error && <p className="text-red-500 my-7">Invalid Credentials</p>}
           <div className="flex items-center border-2 py-2 px-10 rounded-2xl mb-4">
             <BiFace className="text-gray-600" />
             <TextBox
@@ -58,7 +60,7 @@ export default  function Login() {
             />
           </div>
 
-          <Button onClick={onSubmit}>Login</Button>
+          <Button onClick={(e) => onSubmit(e)}>Login</Button>
 
           <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">
             Forgot Password ?
