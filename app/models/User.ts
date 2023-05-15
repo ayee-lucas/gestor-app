@@ -4,12 +4,12 @@ import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IUser {
   name: string;
-    surname: string;
-    username: string;
-    email: string;
-    password: string;
-    role: string;
-    createdAt: Date;
+  surname: string;
+  username: string;
+  email: string;
+  password: string;
+  role: string;
+  createdAt: Date;
 }
 
 export interface IUserModel extends IUser, Document {}
