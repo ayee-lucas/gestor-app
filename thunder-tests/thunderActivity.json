@@ -22,14 +22,56 @@
     "method": "POST",
     "sortNum": 0,
     "created": "2023-05-06T12:57:46.877Z",
-    "modified": "2023-05-07T05:37:23.767Z",
+    "modified": "2023-05-12T03:40:49.523Z",
     "headers": [],
     "params": [],
     "body": {
       "type": "json",
-      "raw": "{\n  \"username\": \"parmas\",\n  \"password\": \"123\"\n}",
+      "raw": "{\n  \"username\": \"alopez\",\n  \"password\": \"123\"\n}",
       "form": []
     },
+    "tests": []
+  },
+  {
+    "_id": "f0516a4d-826d-4ee0-a178-61e69d60f046",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/api/auth/providers",
+    "url": "http://localhost:3000/api/auth/providers",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-11T02:37:14.622Z",
+    "modified": "2023-05-11T02:37:14.622Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "73a0fc80-1815-42bf-bb6c-b17847fc27bc",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/api/auth/signin",
+    "url": "http://localhost:3000/api/auth/signin",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-12T04:28:51.085Z",
+    "modified": "2023-05-12T04:28:51.085Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "b65dc06b-04d5-4ff6-bb5e-9dcbcac28b75",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:3000/api/auth/session",
+    "url": "http://localhost:3000/api/auth/session",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-05-12T04:29:07.007Z",
+    "modified": "2023-05-12T04:29:07.007Z",
+    "headers": [],
+    "params": [],
     "tests": []
   }
 ]

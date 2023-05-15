@@ -1,60 +1,65 @@
 import NextAuth from "next-auth/next";
+import { NextAuthOptions } from "next-auth";
 import dbConnect from "@/app/utils/DatabaseConnection";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { NextResponse } from "next/server";
 
 dbConnect();
 
+const url = process.env.NEXTAUTH_URL as string;
 
-const handler = NextAuth({
+console.log({ nextauth: `${url}api/User/login}` });
+
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
-
+     
       credentials: {
-        username: {
-          label: "Username",
-          type: "text",
-        },
-        password: {
-          label: "Password",
-          type: "password",
-        },
+        username: { label: "Username", type: "text", placeholder: "jsmith" },
+        password: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        console.log({
-          datafetched: { credentials },
-        });
 
-        const { username, password } = credentials as any;
-
-        console.log({ username, password });
-
-        const res = await fetch(`${process.env.NEXTAUTH_URL}/api/User/login}`, {
+        const res = await fetch("http://localhost:3000/api/User/login", {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
           body: JSON.stringify({
-            username,
-            password,
+            username: credentials?.username,
+            password: credentials?.password,
           }),
+          headers: { "Content-Type": "application/json" },
         });
-
 
         const user = await res.json();
 
-        console.log({ user });
+        console.log({user: user});
 
         if (res.ok && user) {
           return user;
-        } else return null;
+        } else {
+          console.log(res);
+          return false;
+        }
       },
     }),
   ],
-
   pages: {
     signIn: "/account/login",
+    error: "/account/login",
   },
-});
+
+  callbacks: {
+    async jwt({ token, user }) {
+      return { ...token, ...user };
+    },
+
+    async session({ session, token }) {
+      session.user = token as any;
+      return session;
+    },
+  },
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
