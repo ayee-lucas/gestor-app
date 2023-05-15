@@ -21,7 +21,7 @@ export async function GET(request: Request, params: params) {
 
     const session = await getServerSession(authOptions);
 
-    console.log({ userLogged: session?.user.id });
+    console.log({ userLogged: session?.user });
 
     //
 
