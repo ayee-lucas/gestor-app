@@ -29,8 +29,6 @@ const RoomCard = ({
 }: RoomCardProps) => {
   const [statePop, setStatePop] = useState(false);
 
-  console.log(statePop);
-
   return (
     <>
       <RoomCardContext.Provider value={{ statePop, setStatePop }}>
