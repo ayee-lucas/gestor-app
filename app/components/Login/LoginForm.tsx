@@ -3,10 +3,11 @@
 import SideArt from "@/app/components/Login/SideArt";
 import TextBox from "@/app/components/elements/TextBox";
 import Button from "@/app/components/elements/Button";
-import { usePathname, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { useEffect, useRef } from "react";
+import {  useRef } from "react";
 import { BiFace, BiKey } from "react-icons/bi";
+import Link from "next/link";
 
 export default function LoginForm() {
   const params = useSearchParams();
@@ -63,7 +64,9 @@ export default function LoginForm() {
           <Button onClick={(e) => onSubmit(e)}>Login</Button>
 
           <span className="text-sm ml-2 hover:text-blue-500 cursor-pointer">
-            Forgot Password ?
+            <Link href={"/account/signup"}>
+              <h1>Not a member? Register</h1>
+            </Link>
           </span>
         </form>
       </div>

@@ -8,6 +8,9 @@ const nextConfig = {
     serverComponentsExternalPackages: ["mongoose"],
     serverActions: true,
   },
+  images: {
+    domains: ["images.unsplash.com"],
+  },
 };
 
 module.exports = nextConfig;
