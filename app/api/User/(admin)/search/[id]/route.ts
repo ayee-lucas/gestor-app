@@ -30,7 +30,7 @@ export async function GET(request: Request, params: params) {
 
   const session = await getServerSession(authOptions);
 
-  console.log({ userLogged: session?.user });
+  console.log({ userLogged: session });
 
   // Check role and user auth
 
@@ -38,7 +38,7 @@ export async function GET(request: Request, params: params) {
     return NextResponse.redirect(`${url}/account/login`);
   }
 
-  if (session?.user.role === "user") {
+  if (session?.user.role !== "admin") {
     return NextResponse.json({ message: "no authorized" }, { status: 401 });
   }
 
