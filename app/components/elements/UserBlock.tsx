@@ -12,7 +12,6 @@ const UserBlock = ({ setShow, show }: Props) => {
 
   const user = session?.user;
 
-  console.log(user);
 
   return (
     <div

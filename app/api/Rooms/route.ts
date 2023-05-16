@@ -37,6 +37,9 @@ export async function POST(request: NextRequest) {
         // Save the Service object to the database
         const rooms = await data.save();
 
+
+
+
         // Return a NextResponse object with the saved service data and a 200 status code
         return new NextResponse(
             JSON.stringify(rooms), {
