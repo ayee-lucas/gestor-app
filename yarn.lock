@@ -76,9 +76,14 @@
   "resolved" "https://registry.npmjs.org/@next/font/-/font-13.4.1.tgz"
   "version" "13.4.1"
 
-"@next/swc-win32-x64-msvc@13.4.2":
-  "integrity" "sha512-O7bort1Vld00cu8g0jHZq3cbSTUNMohOEvYqsqE10+yfohhdPHzvzO+ziJRz4Dyyr/fYKREwS7gR4JC0soSOMw=="
-  "resolved" "https://registry.npmjs.org/@next/swc-win32-x64-msvc/-/swc-win32-x64-msvc-13.4.2.tgz"
+"@next/swc-linux-x64-gnu@13.4.2":
+  "integrity" "sha512-NpCa+UVhhuNeaFVUP1Bftm0uqtvLWq2JTm7+Ta48+2Uqj2mNXrDIvyn1DY/ZEfmW/1yvGBRaUAv9zkMkMRixQA=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-gnu/-/swc-linux-x64-gnu-13.4.2.tgz"
+  "version" "13.4.2"
+
+"@next/swc-linux-x64-musl@13.4.2":
+  "integrity" "sha512-ZWVC72x0lW4aj44e3khvBrj2oSYj1bD0jESmyah3zG/3DplEy/FOtYkMzbMjHTdDSheso7zH8GIlW6CDQnKhmQ=="
+  "resolved" "https://registry.npmjs.org/@next/swc-linux-x64-musl/-/swc-linux-x64-musl-13.4.2.tgz"
   "version" "13.4.2"
 
 "@nodelib/fs.scandir@2.1.5":
@@ -183,6 +188,11 @@
   "version" "6.0.2"
   dependencies:
     "debug" "4"
+
+"animate.css@^4.1.1":
+  "integrity" "sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ=="
+  "resolved" "https://registry.npmjs.org/animate.css/-/animate.css-4.1.1.tgz"
+  "version" "4.1.1"
 
 "ansi-regex@^5.0.1":
   "integrity" "sha512-quJQXlTSUGL2LH9SUXo8VwsY4soanhgo6LNSm84E1LBcE8s3O0wpdiRzyR9z/ZZJMlMWv37qOOb9pdJlMUEKFQ=="
@@ -1303,7 +1313,12 @@
   "resolved" "https://registry.npmjs.org/sweetalert2/-/sweetalert2-11.7.5.tgz"
   "version" "11.7.5"
 
-"tailwindcss@3.3.2":
+"tailwind-scrollbar@^3.0.4":
+  "integrity" "sha512-X/QBsn/C5u9x6/YvTc1Zo7b09Gqs5BfDe0UK/8LDQUv8IEBKF+p2ISTRwvAr50MH0hn/wTyCEOann7uXoa1/2Q=="
+  "resolved" "https://registry.npmjs.org/tailwind-scrollbar/-/tailwind-scrollbar-3.0.4.tgz"
+  "version" "3.0.4"
+
+"tailwindcss@3.3.2", "tailwindcss@3.x":
   "integrity" "sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w=="
   "resolved" "https://registry.npmjs.org/tailwindcss/-/tailwindcss-3.3.2.tgz"
   "version" "3.3.2"
