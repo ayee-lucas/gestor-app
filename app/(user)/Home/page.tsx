@@ -1,4 +1,4 @@
-import HotelCardSm from "@/app/components/Home/HotelCardSm";
+import HotelCardSm, { IHotelCardSm } from "@/app/components/Home/HotelCardSm";
 import RoomCard from "@/app/components/Home/RoomCard";
 import { IRoom } from "@/app/models/rooms";
 
@@ -6,7 +6,7 @@ const url = process.env.NEXTAUTH_URL as string;
 
 async function getRooms() {
   const res = await fetch(`${url}/api/Rooms/`, {
-    cache: "no-store",
+    next: {revalidate: 100}
   });
 
   if (!res.ok) throw new Error(res.statusText);
@@ -16,10 +16,24 @@ async function getRooms() {
   return rooms;
 }
 
+async function getHotels() {
+  const res = await fetch(`${url}/api/Hotels/`, {
+    cache: "no-store",
+  });
+
+  if (!res.ok) throw new Error(res.statusText);
+
+  const hotels = await res.json();
+
+  return hotels;
+}
+
 export default async function Home() {
   const roomsData = await getRooms();
 
-  console.log({ roomsData: roomsData });
+  const hotelsData = await getHotels();
+
+  console.log(hotelsData);
 
   return (
     <>
@@ -27,11 +41,15 @@ export default async function Home() {
         <div className="w-full h-full bg-indigo-100 p-2 ">
           <h1 className="text-2xl font-semibold">Sophisticated</h1>
           <div className="grid grid-flow-col gap-4 col-auto overflow-x-auto p-6 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 scroll-smooth">
-            <HotelCardSm />
-            <HotelCardSm />
-            <HotelCardSm />
-            <HotelCardSm />
-            <HotelCardSm />
+            {hotelsData.map((hotel: IHotelCardSm) => (
+              <HotelCardSm
+                name={hotel.name}
+                country={hotel.country}
+                city={hotel.city}
+                rating={hotel.rating}
+                address={hotel.address}
+              />
+            ))}
           </div>
         </div>
 
