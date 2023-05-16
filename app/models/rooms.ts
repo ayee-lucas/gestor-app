@@ -7,6 +7,9 @@ export interface IRoom {
   type: string;
   description: string;
   price: number;
+  rating: number;
+  location: string;
+  hotel: string;
   available: boolean;
   createdAt: Date;
 }
