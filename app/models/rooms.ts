@@ -9,12 +9,12 @@ export interface IRoom {
   price: number;
   rating: number;
   location: string;
-  hotel: string;
+  hotel: Schema.Types.ObjectId;
   available: boolean;
   createdAt: Date;
 }
 
-export interface IRoomModel extends IRoom, Document {}
+export interface IRoomModel extends IRoom, Document { }
 
 const roomSchema = new Schema(
   {
@@ -38,12 +38,13 @@ const roomSchema = new Schema(
       type: Number,
       required: [true, "Room rating is required."],
     },
-    location:{
+    location: {
       type: String,
       required: [true, "Room location is required."],
     },
-    hotel:{
-      type: String,
+    hotel: {
+      type: Schema.Types.ObjectId,
+      ref: 'Hotel',
       required: [true, "Room hotel is required."],
     },
     available: {
