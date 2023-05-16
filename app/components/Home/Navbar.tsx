@@ -11,7 +11,7 @@ import UserMenu from "./UserMenu";
 const Navbar = () => {
   const { data: session } = useSession();
 
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
   return (
     <nav className="bg-white w-full min-h-[300px] z-50 border-gray-200  dark:bg-indigo-800">

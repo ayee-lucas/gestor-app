@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="mt-[5rem] w-full h-full">
+    <div className="w-full h-full p-4">
       <h1>Home Page</h1>
     </div>
   );
