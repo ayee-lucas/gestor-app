@@ -1,9 +1,8 @@
 import React from "react";
-import 'animate.css'
-
+import "animate.css";
 import { useSession } from "next-auth/react";
-
 import Link from "next/link";
+import { signOut } from "next-auth/react";
 
 const UserMenu = () => {
   const { data: session } = useSession();
@@ -21,7 +20,7 @@ const UserMenu = () => {
         </li>
 
         <li className="py-3 text-lg font-semibold after:content-[''] after:block after:w-full after:h-[1px] after:bg-black after:mt-[4px] after:opacity-10 ">
-           {session?.user?.username}
+          {session?.user?.username}
         </li>
 
         <li className="py-3 after:content-[''] after:block after:w-full after:h-[1px] after:bg-black after:mt-[2px] after:opacity-10">
@@ -29,7 +28,10 @@ const UserMenu = () => {
         </li>
 
         <li className="py-3 after:content-[''] after:block after:w-full after:h-[1px] after:bg-black after:mt-[2px] after:opacity-10">
-          <button className="w-full hover:text-red-500 transition-all">
+          <button
+            onClick={() => signOut()}
+            className="w-full hover:text-red-500 transition-all"
+          >
             Sign out
           </button>
         </li>
