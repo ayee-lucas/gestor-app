@@ -47,7 +47,7 @@ const Information = () => {
         <div className="col-span-12 lg:col-span-5 z-20 space-y-6 px-4 sm:px-6 mt-20">
           <h2 className="text-5xl font-semibold">
             Discover the Perfect Room for Your Tastes and Needs
-          </p>
+          </h2>
           <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-sm">
             Organize
           </button>
