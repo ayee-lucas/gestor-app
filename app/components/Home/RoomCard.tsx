@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const RoomCard = ({
   description = "",
-  price = "",
+  price = 0,
   type = "",
   location = "",
 }) => {

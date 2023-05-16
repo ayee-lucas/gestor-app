@@ -28,7 +28,6 @@ export default async function Home() {
       <div className="w-full h-full py-4 flex flex-wrap justify-start gap-3">
         {roomsData.map((room: IRoom) => (
           <RoomCard
-          location={room.location}
             description={room.description}
             price={room.price}
             type={room.type}
