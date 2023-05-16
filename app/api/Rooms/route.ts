@@ -30,17 +30,14 @@ export async function POST(request: NextRequest) {
         const json = await request.json();
         console.log({ DataRequest: json });
 
-        // Create a new Service object with the parsed data
+        // Create a new room object with the parsed data
         const data = new Rooms(json);
-        console.log({ Room: data });
+        console.log({ RoomCreated: data });
 
-        // Save the Service object to the database
+        // Save the Room object to the database
         const rooms = await data.save();
 
-
-
-
-        // Return a NextResponse object with the saved service data and a 200 status code
+        // Return a NextResponse object with the saved room data and a 200 status code
         return new NextResponse(
             JSON.stringify(rooms), {
             status: 200,
