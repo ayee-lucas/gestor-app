@@ -21,6 +21,7 @@ const hotelSchema = new Schema(
     name: {
       type: String,
       required: [true, "Hotel name is required."],
+      unique: true
     },
     admin: {
       type: Schema.Types.ObjectId,

@@ -12,18 +12,18 @@ export async function POST(request: NextRequest) {
     const session = await getServerSession(authOptions);
 
     // Verificar si el usuario está autenticado y es un administrador
-    if (!session?.user || session.user.role !== "owner") {
+    if (!session?.user || session.user.role !== "admin") {
       return new NextResponse("Unauthorized", {
         status: 401,
       });
     }
 
-    const { name, address, city, country, rating, rooms } = await request.json();
+    const { name, admin, address, city, country, rating, rooms } = await request.json();
 
     // Crear un nuevo objeto Hotel con los datos proporcionados
     const hotelData = {
       name,
-      admin: session.user.id,
+      admin,
       address,
       city,
       country,

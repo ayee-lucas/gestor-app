@@ -1,5 +1,6 @@
-import dbConnect from "@/app/utils/DatabaseConnection";
+/* import dbConnect from "@/app/utils/DatabaseConnection";
 import Reservation from "@/app/models/reservation";
+import Hotel from "@/app/models/hotels";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { NextRequest, NextResponse } from "next/server";
@@ -15,12 +16,18 @@ export async function GET(request: NextRequest) {
     return NextResponse.redirect(`${url}/account/login`);
   }
 
-  if (session?.user.role !== "admin") {
-    return NextResponse.json({ message: "Not authorized" }, { status: 401 });
-  }
-
   try {
-    const reservations = await Reservation.find();
+    // Buscar el hotel asociado al usuario logueado
+    const hotel = await Hotel.findOne({ admin: session?.user.id });
+
+    if (!hotel) {
+      return new NextResponse("Hotel not found", {
+        status: 404,
+      });
+    }
+
+    // Consultar todas las reservaciones que pertenezcan al hotel encontrado
+    const reservations = await Reservation.find({ room: hotel._id });
 
     if (reservations.length === 0) {
       return new NextResponse("No reservations found", {
@@ -36,6 +43,6 @@ export async function GET(request: NextRequest) {
     return new NextResponse(JSON.stringify(err), {
       status: 500,
     });
-
   }
 }
+ */
