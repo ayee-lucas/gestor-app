@@ -59,7 +59,7 @@ export default async function Home() {
             <RoomCard
               hotel={room.hotel}
               location={room.location}
-              smallDescription={room.shortescription}
+              smallDescription={room.shortDescription}
               image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
               price={room.price}
               type={room.type}

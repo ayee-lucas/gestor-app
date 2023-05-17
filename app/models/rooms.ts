@@ -10,12 +10,12 @@ export interface IRoom {
   rating: number;
   shortDescription: string; // corrected property name
   location: string;
-  hotel: Schema.Types.ObjectId;
+  hotel: string;
   available: boolean;
   createdAt: Date;
 }
 
-export interface IRoomModel extends IRoom, Document { }
+export interface IRoomModel extends IRoom, Document {}
 
 const roomSchema = new Schema(
   {
@@ -54,7 +54,7 @@ const roomSchema = new Schema(
     },
     hotel: {
       type: Schema.Types.ObjectId,
-      ref: 'Hotel',
+      ref: "Hotel",
       required: [true, "Room hotel is required."],
     },
     available: {
@@ -72,7 +72,6 @@ const roomSchema = new Schema(
     versionKey: false,
   }
 );
-
 
 const Room = (models.Room ||
   mongoose.model<IRoomModel>("Room", roomSchema)) as typeof models.Room &
