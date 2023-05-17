@@ -1,5 +1,5 @@
 "use strict";
-
+import Hotel from "@/app/models/hotels";
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IRoom {
@@ -8,14 +8,14 @@ export interface IRoom {
   description: string;
   price: number;
   rating: number;
-  shortescription: string;
+  shortDescription: string; // corrected property name
   location: string;
-  hotel: string;
+  hotel: Schema.Types.ObjectId;
   available: boolean;
   createdAt: Date;
 }
 
-export interface IRoomModel extends IRoom, Document {}
+export interface IRoomModel extends IRoom, Document { }
 
 const roomSchema = new Schema(
   {
@@ -53,22 +53,26 @@ const roomSchema = new Schema(
       required: [true, "Room location is required."],
     },
     hotel: {
-      type: String,
+      type: Schema.Types.ObjectId,
+      ref: 'Hotel',
       required: [true, "Room hotel is required."],
     },
     available: {
       type: Boolean,
       default: true,
     },
+
     createdAt: {
       type: Date,
       default: Date.now,
     },
   },
+
   {
     versionKey: false,
   }
 );
+
 
 const Room = (models.Room ||
   mongoose.model<IRoomModel>("Room", roomSchema)) as typeof models.Room &
