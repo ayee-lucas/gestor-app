@@ -5,7 +5,7 @@ import Section from "./Section";
 const Information = () => {
   return (
     <div className="h-full dark:bg-[#100724] dark:text-white ">
-      <section className="flex w-full mb-20">
+      <section className="flex w-full mb-10 px-4">
         <div className="flex items-center col-span-12 mt-10">
           <div className="flex justify-center px-10">
             <Image
@@ -18,12 +18,14 @@ const Information = () => {
             />
           </div>
         </div>
-        <div className="col-span-12 lg:col-span-5 space-y-6 px-4 sm:px-6 mt-20">
-          <h2 className="text-5xl font-semibold">Find Hotels for Your Stay</h2>
-          <p className="paragraph">
+        <div className="col-span-12 lg:col-span-5 space-y-6 px-4 max-sm:px-0 mt-16 ">
+          <h2 className="text-5xl max-sm:text-2xl font-semibold max-sm:text-center">
+            Find Hotels for Your Stay
+          </h2>
+          <p className="paragraph max-sm:hidden">
             Take a look at the available hotels around the world
           </p>
-          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">
+          <button className="w-full sm:max-w-[200px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-sm">
             Explore
           </button>
         </div>
@@ -46,11 +48,8 @@ const Information = () => {
           <h2 className="text-5xl font-semibold">
             Discover the Perfect Room for Your Tastes and Needs
           </h2>
-          <p className="paragraph">
-            Plan Parties, Gatherings, and Events with Us
-          </p>
-          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-base">
-            Organize Events
+          <button className="w-full sm:max-w-[240px] px-10 py-4 bg-inherit text-gradient border-2 rounded-full border-[#55149e] text-sm">
+            Organize
           </button>
         </div>
       </section>
