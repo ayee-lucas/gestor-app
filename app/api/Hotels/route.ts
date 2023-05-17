@@ -82,3 +82,20 @@ export async function PUT(request: NextRequest) {
     });
   }
 }
+
+export async function GET(){
+  try {
+    const hotels = await Hotel.find().populate("rooms");
+
+    return new NextResponse(JSON.stringify(hotels), {
+      status: 200,
+    });
+  } catch (err) {
+    console.log(err);
+    return new NextResponse(JSON.stringify(err), {
+      status: 500,
+    });
+  }
+
+
+}

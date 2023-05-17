@@ -8,7 +8,9 @@ export interface IHotel {
   city: string;
   country: string;
   rating: number;
-  rooms: string[];
+  rooms?: [
+
+  ];
   createdAt: Date;
 }
 

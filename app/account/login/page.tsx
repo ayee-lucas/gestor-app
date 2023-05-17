@@ -13,7 +13,7 @@ export default async function SignInPage() {
     return <LoginForm />;
   }
 
-  if (session?.user.role === "admin") {
+  if (session?.user.role === "admin" || session?.user.role === "owner") {
     return redirect("/dashboard");
   }
 

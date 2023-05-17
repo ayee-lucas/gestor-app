@@ -13,7 +13,7 @@ const UserMenu = () => {
   };
 
   return (
-    <div className="animate__animated animate__fadeInRight animate__faster bg-slate-50 bg-opacity-80 max-w-[300px] w-full absolute right-5 mt-2 rounded-xl backdrop-blur-3xl backdrop-saturate-200 drop-shadow-2xl backdrop:shadow-2xl">
+    <div className="animate__animated animate__fadeInLeft bg-slate-50 bg-opacity-80 max-w-[300px] w-full absolute right-5 mt-2 rounded-xl backdrop-blur-3xl backdrop-saturate-200 drop-shadow-2xl backdrop:shadow-2xl">
       <ul className="px-4 py-3 rounded-sm">
         <li className="pt-3 after:content-['']">
           <span className="text-2xl font-semibold tracking-[1px]">Profile</span>
