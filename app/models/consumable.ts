@@ -6,7 +6,6 @@ export interface IConsumable {
     name: string;
     description: string;
     price: number;
-    quantity: number;
 }
 
 export interface IConsumableModel extends IConsumable, Document {}
@@ -15,6 +14,7 @@ const consumableSchema = new Schema({
     name: {
         type: String,
         required: [true, "Consumable name is required."],
+        unique: true
     },
     description: {
         type: String,
@@ -23,10 +23,6 @@ const consumableSchema = new Schema({
     price:{
         type: Number,
         required: [ true, "Price is required"],
-    },
-    quantity:{
-        type: Number,
-        required:[true, "Quantity is required"],
     }
 
 });
