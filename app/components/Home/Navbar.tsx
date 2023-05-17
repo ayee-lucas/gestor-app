@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Navlinks from "./Navlinks";
@@ -11,6 +11,8 @@ const Navbar = () => {
   const { data: session } = useSession();
 
   const [show, setShow] = useState(true);
+
+
 
   return (
     <nav className="bg-white w-full min-h-[100px] z-50 border-gray-200  dark:bg-indigo-800">
@@ -51,9 +53,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      {show ? null : <UserMenu />}
+       
+        {show ? null : <UserMenu />}
 
-      {session?.user ? <UserBlock show={show} setShow={setShow} /> : null}
+        {session?.user ? <UserBlock show={show} setShow={setShow} /> : null}
     </nav>
   );
 };

@@ -9,7 +9,7 @@ const Rating = ({ rating = 0 }) => {
       {stars.map((star) => (
         <AiFillStar key={star} className="text-yellow-500" />
       ))}
-      <span className="ml-2 text-sm text-gray-600">{rating} / 5</span>
+      <span className="ml-2 text-sm text-gray-600 dark:text-gray-100">{rating} / 5</span>
       
     </div>
   );

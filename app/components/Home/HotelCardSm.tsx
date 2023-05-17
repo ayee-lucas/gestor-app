@@ -21,7 +21,7 @@ const HotelCardSm = ({
   return (
     <Link
       href="#"
-      className="flex flex-col w-max  items-center bg-white border border-gray-200 rounded-lg shadow md:flex-row md:max-w-xl hover:bg-gray-100 "
+      className="flex flex-col w-max transition-all items-center bg-white border border-gray-200 dark:bg-zinc-900 dark:border-zinc-700  rounded-lg shadow md:flex-row md:max-w-xl hover:bg-zinc-200 dark:hover:bg-zinc-800 "
     >
       <Image
         width={210}
@@ -31,10 +31,10 @@ const HotelCardSm = ({
         alt="hotel img"
       />
       <div className="flex flex-col justify-between p-4 leading-normal min-w-[300px]">
-        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 ">
+        <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
           {name}
         </h5>
-        <p className="mb-3 font-normal text-gray-700 ">
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-100 ">
           {country}, {city} <br />
           {address}
         </p>
