@@ -1,4 +1,4 @@
-import dbConnect from "@/app/utils/DatabaseConnection";
+/* import dbConnect from "@/app/utils/DatabaseConnection";
 import Reservation from "@/app/models/reservation";
 import Event from "@/app/models/event";
 import Service from "@/app/models/services";
@@ -103,3 +103,4 @@ export async function POST(request: NextRequest) {
     return new NextResponse("Failed to generate bill", { status: 500 });
   }
 }
+ */
