@@ -45,9 +45,9 @@ const billSchema = new Schema(
     },
     items: [
       {
-        product: {
+        consumable: {
           type: mongoose.Schema.Types.ObjectId,
-          ref: "Product",
+          ref: "Consumable",
         },
         quantity: {
           type: Number,

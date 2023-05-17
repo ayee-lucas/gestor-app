@@ -8,21 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 // Conectar a la base de datos
 dbConnect();
 
-export async function GET(request: NextRequest) {
-  try {
-    // Obtener todos los hoteles
-    const hotels = await Hotel.find();
 
-    return new NextResponse(JSON.stringify(hotels), {
-      status: 200,
-    });
-  } catch (err) {
-    console.log(err);
-    return new NextResponse(JSON.stringify(err), {
-      status: 500,
-    });
-  }
-}
 export async function PUT(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
