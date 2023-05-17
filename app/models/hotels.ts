@@ -19,7 +19,8 @@ const hotelSchema = new Schema(
     name: {
       type: String,
       required: [true, "Hotel name is required."],
-      unique: true
+      unique: true,
+      maxlength: [200, "Hotel name cannot exceed 200 characters."],
     },
     admin: {
       type: Schema.Types.ObjectId,
@@ -41,8 +42,9 @@ const hotelSchema = new Schema(
     rating: {
       type: Number,
       required: [true, "Hotel stars is required."],
+      min: [1, "Rating cannot be less than 1."],
+      max: [5, "Rating cannot be greater than 5."],
     },
-
     rooms: [
       {
         type: Schema.Types.ObjectId,
@@ -58,6 +60,7 @@ const hotelSchema = new Schema(
     versionKey: false,
   }
 );
+
 
 const Hotel = (models.Hotel ||
   mongoose.model<IHotelModel>("Hotel", hotelSchema)) as typeof models.Hotel &
