@@ -5,6 +5,12 @@ import mongoose, { Schema, model, models, Document } from "mongoose";
 export interface IBill {
   issueDate: Date;
   nit: string;
+  user: Schema.Types.ObjectId;
+  roomPrice: Schema.Types.ObjectId;
+  eventType: Schema.Types.ObjectId;
+  items: Schema.Types.ObjectId;
+  services: Schema.Types.ObjectId;
+  hotel: Schema.Types.ObjectId;
   itemsSubtotal: Number;
   servicesSubtotal: Number;
   total: number;

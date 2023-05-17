@@ -5,6 +5,7 @@ import mongoose, { Schema, model, models, Document } from "mongoose";
 export interface IReservation {
   event: string;
   user: string;
+  room: Schema.Types.ObjectId;
   attendees: number;
   createdAt: Date;
 }
