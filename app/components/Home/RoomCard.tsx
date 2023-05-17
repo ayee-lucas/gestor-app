@@ -3,46 +3,50 @@
 import React, { useState, createContext } from "react";
 import Image from "next/image";
 import RoomPopUp from "./RoomPopUp";
+import { IRoom } from "@/app/models/rooms";
 
-export interface RoomCardProps {
-  hotel?: string;
-  smallDescription?: string;
-  price?: number;
-  type?: string;
-  location?: string;
-  rating?: number;
-  statePop?: boolean;
-  setStatePop?: any;
-  image?: string;
+interface props extends IRoom {
+  statePop: boolean;
+  setStatePop: (statePop: boolean) => void;
 }
 
-export const RoomCardContext = createContext({} as RoomCardProps);
+export const RoomCardContext = createContext({} as props);
 
 const RoomCard = ({
   hotel,
-  smallDescription,
+  description,
+  shortDescription,
   price,
   type,
   location,
   rating,
   image,
-}: RoomCardProps) => {
+  number,
+  available,
+}: IRoom) => {
   const [statePop, setStatePop] = useState(false);
 
   return (
     <>
-      <RoomCardContext.Provider value={{ statePop, setStatePop }}>
-        {statePop ? (
-          <RoomPopUp
-            hotel={hotel}
-            image={image}
-            location={location}
-            price={price}
-            rating={rating}
-            smallDescription={smallDescription}
-            type={type}
-          />
-        ) : null}
+      <RoomCardContext.Provider
+        value={
+          {
+            statePop,
+            setStatePop,
+            description,
+            available,
+            image,
+            location,
+            number,
+            price,
+            rating,
+            shortDescription,
+            type,
+            hotel,
+          } as props
+        }
+      >
+        {statePop ? <RoomPopUp /> : null}
 
         <div
           onClick={() => setStatePop(!statePop)}
@@ -58,13 +62,13 @@ const RoomCard = ({
 
           <div className="px-6 py-3">
             <div className="font-bold text-2xl mb-2">
-              {hotel}
+              {type}
               <br />
-              <span className="text-lg">{location}</span>
+              <span className="text-lg">{hotel?.name}</span>
               <br />
-              <span className="text-lg font-medium">{type}</span>
+              <span className="text-lg font-medium">{location}</span>
             </div>
-            <p className="text-gray-700 text-base">{smallDescription}</p>
+            <p className="text-gray-700 text-base">{shortDescription}</p>
             <p>
               <span className="font-bold">Price: </span>
               {price}$

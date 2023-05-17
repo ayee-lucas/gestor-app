@@ -37,7 +37,7 @@ export default async function Home() {
 
   return (
     <>
-      <div className="w-full h-full p-4">
+      <div className="w-full h-full">
         <div className="w-full h-full bg-indigo-100 p-2 rounded-lg">
           <h1 className="text-2xl font-semibold">Sophisticated</h1>
           <div className="grid grid-flow-col gap-4 col-auto overflow-x-auto p-6 scrollbar-thin scrollbar-thumb-blue-700 scrollbar-track-blue-300 scroll-smooth">
@@ -53,13 +53,16 @@ export default async function Home() {
           </div>
         </div>
 
-        <h1 className="text-5xl font-bold py-10">Rooms</h1>
+        <h1 className="text-5xl font-bold px-6 py-10">Enjoy a comfortable stay!</h1>
         <div className="w-full h-full py-4 flex flex-wrap justify-evenly gap-y-5">
           {roomsData.map((room: IRoom) => (
             <RoomCard
-              hotel={room.hotel?.name}
+              hotel={room.hotel}
+              number={room.number}
+              available={room.available}
               location={room.location}
-              smallDescription={room.shortDescription}
+              description={room.description}
+              shortDescription={room.shortDescription}
               image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
               price={room.price}
               type={room.type}

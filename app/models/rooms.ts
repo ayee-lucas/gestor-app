@@ -10,16 +10,17 @@ export interface IRoom {
   rating: number;
   shortDescription: string; // corrected property name
   location: string;
+  image: string;
   hotel?: {
-    name: string
-            admin: string;
-            address: string;
-            city: string;
-            country: string;
-            rating: number; 
-  }
+    name: string;
+    admin: string;
+    address: string;
+    city: string;
+    country: string;
+    rating: number;
+  };
   available: boolean;
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 export interface IRoomModel extends IRoom, Document {}
