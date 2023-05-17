@@ -51,10 +51,7 @@ const billSchema = new Schema(
         },
         quantity: {
           type: Number,
-        },
-        unitPrice: {
-          type: Number,
-        },
+        }
       },
     ],
     services: [
@@ -63,11 +60,7 @@ const billSchema = new Schema(
           type: mongoose.Schema.Types.ObjectId,
           ref: "Service",
           required: true,
-        },
-        price: {
-          type: Number,
-          required: true,
-        },
+        }
       },
     ],
     itemsSubtotal: {
