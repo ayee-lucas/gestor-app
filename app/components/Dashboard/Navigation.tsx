@@ -2,7 +2,7 @@
 import React, { useState, createContext } from "react";
 import SideBar from "./SideBar";
 import Dashboard from "./Dashboard";
-import User from "@/app/(admin)/dashboard/User";
+import User from "@/app/components/Dashboard/User/User";
 export interface NavigationContextType {
     setMenu?:any;
     handleMenu?:any;
@@ -28,7 +28,7 @@ const Navigation = () => {
             <div>
                 <SideBar/>
             </div>
-            <div className="w-full p-8 dark:">
+            <div className="w-full p-8 bg-indigo-100 dark:bg-gray-900">
                 {menu === "Dashboard" && <Dashboard />}
                 {menu === "User" && <User />}
             </div>

@@ -7,7 +7,7 @@ const AddUser = ({ name = "", type = "" }) => {
         {name}
       </label>
       <input
-        className="form-input w-full px-2 py-1 appearance-none rounded-md focus:border-indigo-600 text-black"
+        className="bg-gray-200 border form-input w-full px-2 py-1 appearance-none rounded-md focus:border-indigo-600 text-black"
         type={type}
       />
     </div>

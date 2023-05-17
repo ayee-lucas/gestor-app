@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 interface IProps{
   name:string;
   Icon:any;
@@ -19,7 +19,7 @@ const NavSideBar = ({ name='', Icon=<></>, fn={}}:IProps) => {
     <li className="relative px-6 py-3">
       <button 
         type="button"
-        className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-800 dark:hover:text-gray-200"
+        className="inline-flex items-center w-full text-sm font-semibold transition-colors duration-150 hover:text-gray-950 dark:hover:text-gray-400"
         onClick={()=> handleMenu(`${name}`)}
       >
         {Icon}

@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useState, useContext } from "react";
+import { UserViewContext, UserViewContextType } from "./User";
+import DeleteUser from "./DeleteUser";
+
 
 const UserRow = ({name='', surname='', email='', identifier='',  tel='', role=''}) => {
+  
+  const { setMenu }:UserViewContextType = useContext(UserViewContext);
+
+  const handleMenu = (param:string) => {
+    setMenu(param)
+    console.log(param)
+  } 
+
+  const [deletePopup, setDeletePopup] = useState(false);
+
   return (
     <tr>
       <td className="px-6 py-4 whitespace-no-wrap border-b dark:border-gray-700 border-gray-200">
@@ -38,12 +51,13 @@ const UserRow = ({name='', surname='', email='', identifier='',  tel='', role=''
 
       <td className="px-6 py-4 whitespace-no-wrap text-right border-b dark:border-gray-700 border-gray-200 text-sm leading-5 font-medium">
         <div className="flex justify-between px-3">
-            <button className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
+            <button onClick={()=> handleMenu("Edit")} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Edit
             </button>
-            <button className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
+            <button onClick={() => setDeletePopup(true)} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Delete
             </button>
+            <DeleteUser trigger={deletePopup} setTrigger={setDeletePopup}/>
         </div>
       </td>
     </tr>

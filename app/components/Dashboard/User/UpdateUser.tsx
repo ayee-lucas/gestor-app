@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Form from "./Form";
-import UserRow from "./UserRow";
+import { UserViewContext, UserViewContextType } from "./User";
 
 const UpdateUser = () => {
+  const { setMenu }: UserViewContextType = useContext(UserViewContext);
+
+  const handleMenu = (param: string) => {
+    setMenu(param);
+    console.log(param);
+  };
+
   return (
     <div>
-      <h4 className="text-gray-600 dark:text-white">Update User</h4>
+      <h3 className="text-gray-700 dark:text-white text-xl font-semibold pt-5">Update User</h3>
 
       <div className="my-5 align-middle inline-block min-w-full shadow overflow-hidden sm:rounded-lg border-b dark:border-gray-700 border-gray-200">
         <table className="min-w-full">
@@ -68,22 +75,47 @@ const UpdateUser = () => {
       </div>
 
       <div className="mt-4">
-        <div className="p-6 bg-gray-200 dark:bg-slate-800 rounded-md shadow-md">
+        <div className="p-6 bg-white dark:bg-slate-800 rounded-md shadow-md">
           <h2 className="text-lg text-gray-700 dark:text-white font-semibold capitalize">
             Credentials:
           </h2>
 
           <form>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
-              <Form name="Identifier" type="text" />
               <Form name="Name" type="text" />
               <Form name="Surname" type="text" />
-              <Form name="Email" type="email" />
               <Form name="Tel" type="number" />
+              <div>
+                <label
+                  className="text-gray-700 dark:text-gray-300"
+                  htmlFor="username"
+                >
+                  Role
+                </label>
+                <select
+                  id="Role"
+                  className="form-input w-full px-2 py-1 appearance-none rounded-md focus:border-indigo-600 text-black"
+                >
+                  <option value="volvo">Client</option>
+                  <option value="saab">Admin</option>
+                </select>
+              </div>
+            </div>
+            <div className="mt-5">
+              <Form name="Email" type="email" />
             </div>
 
-            <div className="flex justify-end mt-4">
-              <button className="px-4 py-2 bg-gray-00 text-gray-300 rounded-md bg-indigo-700 hover:bg-indigo-500 focus:outline-none focus:bg-indigo-600">
+            <div className="flex justify-between mt-4">
+              <button
+                onClick={() => handleMenu("User")}
+                className="px-1 py-2 bg-gray-00 text-gray-700 dark:text-white rounded-md bg-slave-700 dark:hover:text-gray-300 hover:text-gray-400"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={() => handleMenu("User")}
+                className="px-4 py-2 bg-gray-00 text-gray-300 rounded-md bg-indigo-700 hover:bg-indigo-500 hover:text-white focus:outline-none focus:bg-indigo-600"
+              >
                 Save
               </button>
             </div>
