@@ -18,12 +18,12 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const { name, address, city, country, rating, rooms } = await request.json();
+    const { name, admin, address, city, country, rating, rooms } = await request.json();
 
     // Crear un nuevo objeto Hotel con los datos proporcionados
     const hotelData = {
       name,
-      admin: session.user.id,
+      admin,
       address,
       city,
       country,
