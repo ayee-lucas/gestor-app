@@ -13,7 +13,7 @@ export async function PUT(request: NextRequest) {
     const session = await getServerSession(authOptions);
 
     // Verificar si el usuario está autenticado y es un administrador
-    if (!session?.user || session.user.role !== "owner") {
+    if (!session?.user || session.user.role !== "admin") {
       return new NextResponse("Unauthorized", {
         status: 401,
       });
