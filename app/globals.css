@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 @import url("https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@400;500;600;700&display=swap");
 
 html {
@@ -38,4 +39,20 @@ body {
 
 .wix-font{
   font-family: 'Wix Madefor Display', sans-serif;
+}
+
+.img-toggle {
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background: url("../public/Logos/RoomFlyLogo.png") center / cover;
+}
+
+@media (prefers-color-scheme: dark){
+  .img-toggle {
+     background: url("../public/Logos/RoomFlyLogoWhiteTransparent.png") center / cover;
+  }
 }

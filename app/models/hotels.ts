@@ -1,17 +1,17 @@
 "use strict";
+import { IRoom } from "./rooms";
 
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IHotel {
-  name: string;
-  address: string;
-  city: string;
-  country: string;
-  rating: number;
-  rooms?: [
-
-  ];
-  createdAt: Date;
+  name?: string;
+  admin?: string;
+  address?: string;
+  city?: string;
+  country?: string;
+  rating?: number;
+  rooms?: IRoom[];
+  createdAt?: Date;
 }
 
 export interface IHotelModel extends IHotel, Document {}

@@ -1,10 +1,9 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 import Navlinks from "./Navlinks";
-import NavDown from "./NavDown";
 import UserBlock from "../elements/UserBlock";
 import UserMenu from "./UserMenu";
 
@@ -13,12 +12,14 @@ const Navbar = () => {
 
   const [show, setShow] = useState(true);
 
+
+
   return (
-    <nav className="bg-white w-full min-h-[300px] z-50 border-gray-200  dark:bg-indigo-800">
+    <nav className="bg-white w-full min-h-[100px] z-50 border-gray-200  dark:bg-indigo-800">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <Link href={"/"} className="flex items-center">
           <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-            BookFly
+            RoomFly
           </span>
         </Link>
         <div className="flex md:order-2">
@@ -52,11 +53,10 @@ const Navbar = () => {
         </div>
       </div>
 
-      {show ? null : <UserMenu />}
+       
+        {show ? null : <UserMenu />}
 
-      {session?.user ? <UserBlock show={show} setShow={setShow} /> : null}
-
-      <NavDown />
+        {session?.user ? <UserBlock show={show} setShow={setShow} /> : null}
     </nav>
   );
 };

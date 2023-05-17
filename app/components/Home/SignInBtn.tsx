@@ -8,7 +8,7 @@ const SignInBtn = () => {
 
   if (session && session.user) {
     return (
-      <div className="flex items-center justify-between min-w-[200px]">
+      <div className="flex items-center justify-between min-w-[200px] transition-all">
         <p className="px-5 dark:text-white">{`${session.user.name} ${session.user.surname}`}</p>
         <button
           type="button"
