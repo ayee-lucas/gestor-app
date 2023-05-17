@@ -10,7 +10,14 @@ export interface IRoom {
   rating: number;
   shortDescription: string; // corrected property name
   location: string;
-  hotel: string;
+  hotel?: {
+    name: string
+            admin: string;
+            address: string;
+            city: string;
+            country: string;
+            rating: number; 
+  }
   available: boolean;
   createdAt: Date;
 }
