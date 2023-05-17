@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React  from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
-import UserMenu from "../Home/UserMenu";
 interface Props {
   setShow?: any;
   show?: boolean;
