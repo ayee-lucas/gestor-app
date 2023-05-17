@@ -52,6 +52,13 @@ export async function PUT(request: NextRequest) {
       });
     }
 
+    // Verificar si el ID del cuarto es igual al ID del hotel
+    if (existingRoom.hotel.toString() !== existingHotel._id.toString()) {
+      return new NextResponse("Invalid room for the hotel", {
+        status: 400,
+      });
+    }
+
     // Verificar si la habitación ya está agregada al hotel
     if (existingHotel.rooms.includes(existingRoom._id)) {
       return new NextResponse("Room already added to the hotel", {
