@@ -6,7 +6,7 @@ export interface IBill {
   issueDate: Date;
   nit: string;
   user: Schema.Types.ObjectId;
-  roomPrice: Schema.Types.ObjectId;
+  reservation: Schema.Types.ObjectId;
   eventType: Schema.Types.ObjectId;
   items: Schema.Types.ObjectId;
   services: Schema.Types.ObjectId;
@@ -35,9 +35,9 @@ const billSchema = new Schema(
       type: String,
       default: "C/F",
     },
-    roomPrice: {
+    reservation: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Room",
+      ref: "Reservation",
     },
     eventType: {
       type: mongoose.Schema.Types.ObjectId,
