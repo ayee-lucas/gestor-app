@@ -9,6 +9,7 @@ import Image from "next/image";
 import PopUpTable from "./PopUpTable";
 import PopUpText from "./PopUpText";
 
+
 const RoomPopUp = () => {
   const {
     statePop,

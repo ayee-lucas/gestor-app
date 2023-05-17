@@ -5,7 +5,7 @@ import { BiHomeAlt2, BiBuildings } from "react-icons/bi";
 import { IoAirplaneOutline } from "react-icons/io5";
 
 const NavDown = () => {
-  const [active, setActive] = useState("Home");
+  const [active, setActive] = useState("");
 
   const handleActive = (e: any) => {
     setActive(e);
