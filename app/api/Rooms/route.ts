@@ -6,14 +6,10 @@ import { NextRequest, NextResponse } from "next/server";
 // Connect to the database
 dbConnect();
 
-export async function GET() {
+export async function GET(){
   try {
-    const rooms = await Rooms.find();
-    if (!rooms || rooms.length === 0) {
-      return new NextResponse("No rooms found", {
-        status: 404,
-      });
-    }
+    const rooms = await Rooms.find().populate("hotel");
+
     return new NextResponse(JSON.stringify(rooms), {
       status: 200,
     });
@@ -21,7 +17,7 @@ export async function GET() {
     console.log(err);
     return new NextResponse(JSON.stringify(err), {
       status: 500,
-    })
+    });
   }
 }
 
