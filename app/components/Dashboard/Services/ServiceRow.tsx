@@ -3,7 +3,7 @@ import { ServiceViewContext, ServiceViewContextType } from "./Service";
 import DeleteService from "./DeleteService";
 import { IService } from "@/app/models/services";
 
-const ServiceRow = ({ name, description, price, /*userId*/ }: IService) => {
+const ServiceRow = ({ name, description, price}: IService) => {
   const { setMenu }: ServiceViewContextType = useContext(ServiceViewContext);
   const [deletePopup, setDeletePopup] = useState(false);
 
@@ -57,7 +57,6 @@ const ServiceRow = ({ name, description, price, /*userId*/ }: IService) => {
           <DeleteService
             trigger={deletePopup}
             setTrigger={setDeletePopup}
-            /*userId={userId}*/
           />
         </div>
       </td>
