@@ -64,3 +64,37 @@ export async function GET(request: Request, params: params) {
     return NextResponse.json({ message: "error", error: err }, { status: 500 });
   }
 }
+
+
+
+export async function DELETE(request: Request, params: params) {
+  const id = params.params.id;
+  const url = process.env.NEXTAUTH_URL as string;
+  const session = await getServerSession(authOptions);
+  console.log({ userLogged: session });
+
+  if (session?.user.name === undefined) {
+    return NextResponse.redirect(`${url}/account/login`);
+  }
+
+  if (session?.user.role !== "admin") {
+    return NextResponse.json({ message: "no authorized" }, { status: 401 });
+  }
+
+  try {
+    const user = await User.findByIdAndDelete(id);
+    if (!user) {
+      return new NextResponse("Service not found", {
+        status: 404,
+      });
+    }
+    return new NextResponse(JSON.stringify(user), {
+      status: 200,
+    });
+  } catch (err) {
+    console.log(err);
+    return new NextResponse(JSON.stringify(err), {
+      status: 500,
+    });
+  }
+}
