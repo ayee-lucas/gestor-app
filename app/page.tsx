@@ -20,9 +20,6 @@ export default async function Presentation() {
     <main className=" dark:bg-[#100724] ">
       <Start/>
       <Information/>
-      <div className="border-t-[2px] border-separate border-[#55149e] mx-12" />
-      <Benefits/>
-      <div className="border-t-[2px] border-separate border-[#55149e] mx-16 mt-10" />
       <Hero/>
       <div className="border-t-[2px] border-separate border-gray-400 dark:border-gray-700 mx-20 mt-5 mb-8" />
       <Footer/>

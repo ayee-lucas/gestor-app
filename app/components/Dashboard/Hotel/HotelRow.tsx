@@ -6,7 +6,7 @@ import DeleteHotel from "./DeleteHotel";
 import { IHotel } from "@/app/models/hotels";
 
 
-const HotelRow = ({name, address, city, country, rating, rooms, _id}:IHotel) => {
+const HotelRow = ({name, address, city, country, rating, _id}:IHotel) => {
   
   const { setMenu }:HotelViewContextType = useContext(HotelViewContext);
 
@@ -46,10 +46,6 @@ const HotelRow = ({name, address, city, country, rating, rooms, _id}:IHotel) => 
 
       <td className="px-6 py-4 whitespace-no-wrap border-b dark:border-gray-700 border-gray-200">
         <div className="text-sm leading-5 dark:text-white text-gray-900">{rating}</div>
-      </td>
-
-      <td className="px-6 py-4 whitespace-no-wrap border-b dark:border-gray-700 border-gray-200">
-        <div className="text-sm leading-5 dark:text-white text-gray-900">{"rooms"}</div>
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap text-right border-b dark:border-gray-700 border-gray-200 text-sm leading-5 font-medium">

@@ -1,9 +1,7 @@
-import React ,{ useState } from "react";
+import React from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 
 const DeleteService = (props:any) => {
-
-  const [services, setServices] = useState([{}])
 
   return (props.trigger) ? (
     <div className="fixed top-0 left-0 w-[100%] h-[100vh] bg-[#00000066] flex justify-center items-center ">
