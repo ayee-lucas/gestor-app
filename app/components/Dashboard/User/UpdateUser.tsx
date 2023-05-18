@@ -22,10 +22,10 @@ const UpdateUser = () => {
                 Names & Email
               </th>
               <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">
-                Identifier
+                Username
               </th>
               <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">
-                Tel
+                Creation Date
               </th>
               <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">
                 Role
@@ -84,7 +84,9 @@ const UpdateUser = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
               <Form name="Name" type="text" />
               <Form name="Surname" type="text" />
-              <Form name="Tel" type="number" />
+              <Form name="Username" type="text" />
+              <Form name="Email" type="email" />
+              <Form name="Password" type="text" />
               <div>
                 <label
                   className="text-gray-700 dark:text-gray-300"
@@ -101,11 +103,8 @@ const UpdateUser = () => {
                 </select>
               </div>
             </div>
-            <div className="mt-5">
-              <Form name="Email" type="email" />
-            </div>
 
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between mt-8">
               <button
                 onClick={() => handleMenu("User")}
                 className="px-1 py-2 bg-gray-00 text-gray-700 dark:text-white rounded-md bg-slave-700 dark:hover:text-gray-300 hover:text-gray-400"

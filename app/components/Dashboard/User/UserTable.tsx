@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import UserRow from "./UserRow";
 import AddUser from "./AddUser";
+import { IUser } from "@/app/models/User";
 
 const UserTable = () => {
 
@@ -22,19 +23,15 @@ const UserTable = () => {
                             <thead>
                                 <tr>
                                     <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Names & Email</th>
-                                    <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Identifier</th>
-                                    <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Tel</th>
+                                    <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Username</th>
+                                    <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Creation Date</th>
                                     <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Role</th>
                                     <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Options</th>
                                 </tr>
                             </thead>
 
                             <tbody className="bg-white dark:bg-slate-800">
-                                <UserRow name={"Juan"} surname={"Morales"} email={"jmorales@kinal.edu.gt"} identifier={"64513163106354"} tel={"45965301"} role={"Client"} />
-                                <UserRow name={"Alan"} surname={"Lopez"} email={"alopez@kinal.edu.gt"} identifier={"54213241032"} tel={"00469351"} role={"Admin"} />
-                                <UserRow name={"Fernando"} surname={"Alegria"} email={"falegria@kinal.edu.gt"} identifier={"46874065413"} tel={"21756410"} role={"Client"} />
-                                <UserRow name={"Pablo"} surname={"Vasquez"} email={"pvasquez@kinal.edu.gt"} identifier={"04684640121"} tel={"21032650"} role={"Client"} />
-                                <UserRow name={"Carlos"} surname={"Mendez"} email={"cmendez@kinal.edu.gt"} identifier={"9870890420"} tel={"84965320"} role={"Client"} />
+                                <UserRow name={"Juan"} surname={"Morales"} username={"jmorales"} email={"jmorales@kinal.edu.gt"} role={"Client"} createdAt={"0000-00-00"}/>
                             </tbody>
                         </table>
                     </div>

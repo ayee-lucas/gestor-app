@@ -1,14 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import Form from "./Form";
-import { UserViewContext, UserViewContextType } from "./User";
 
 const AddUser = (props: any) => {
-  const { setMenu }: UserViewContextType = useContext(UserViewContext);
-
-  const handleMenu = (param: string) => {
-    setMenu(param);
-    console.log(param);
-  };
 
   return props.trigger ? (
     <div className="fixed top-0 left-0 w-[100%] h-[100vh] bg-[#00000066] flex justify-center items-center ">
@@ -20,11 +13,10 @@ const AddUser = (props: any) => {
 
           <form>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
-              <Form name="Identifier" type="text" />
               <Form name="Name" type="text" />
               <Form name="Surname" type="text" />
+              <Form name="Username" type="text" />
               <Form name="Email" type="email" />
-              <Form name="Tel" type="number" />
               <div>
                 <label
                   className="text-gray-700 dark:text-gray-300"
@@ -40,12 +32,10 @@ const AddUser = (props: any) => {
                   <option value="saab">Admin</option>
                 </select>
               </div>
-            </div>
-            <div className="mt-5">
-              <Form name="Password" type="password" />
+              <Form name="Password" type="text" />
             </div>
 
-            <div className="flex justify-between mt-4">
+            <div className="flex justify-between mt-8">
               <button
                 onClick={() => props.setTrigger(false)}
                 className="px-1 py-2 bg-gray-00 text-gray-800 dark:text-gray-300 rounded-md bg-slave-700 dark:hover:text-white hover:text-gray-400"

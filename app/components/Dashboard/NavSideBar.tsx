@@ -12,7 +12,6 @@ const NavSideBar = ({ name='', Icon=<></>, fn={}}:IProps) => {
 
   const handleMenu = (param:string) => {
     setMenu(param)
-    console.log(param)
   } 
 
   return (  

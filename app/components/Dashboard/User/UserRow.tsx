@@ -1,9 +1,12 @@
+"use client";
+
 import React, { useState, useContext } from "react";
 import { UserViewContext, UserViewContextType } from "./User";
 import DeleteUser from "./DeleteUser";
+import { IUser } from "@/app/models/User";
 
 
-const UserRow = ({name='', surname='', email='', identifier='',  tel='', role=''}) => {
+const UserRow = ({name='', surname='', username='', email='', role='', createdAt=''}) => {
   
   const { setMenu }:UserViewContextType = useContext(UserViewContext);
 
@@ -38,11 +41,11 @@ const UserRow = ({name='', surname='', email='', identifier='',  tel='', role=''
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b dark:border-gray-700 border-gray-200">
-        <div className="text-sm leading-5 dark:text-white text-gray-900">{identifier}</div>
+        <div className="text-sm leading-5 dark:text-white text-gray-900">{username}</div>
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b dark:border-gray-700 border-gray-200 text-sm leading-5 dark:text-white text-gray-500">
-        {tel}
+        {createdAt}
       </td>
 
       <td className="px-6 py-4 whitespace-no-wrap border-b dark:border-gray-700 border-gray-200 text-sm leading-5 dark:text-white text-gray-500">
