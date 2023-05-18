@@ -15,8 +15,7 @@ export interface IReservationModel extends IReservation, Document {}
 const reservationSchema = new Schema({
   event: {
     type: Schema.Types.ObjectId,
-    ref: "Event",
-    required: [true, "Event is required."],
+    ref: "Event"
   },
   user: {
     type: Schema.Types.ObjectId,
