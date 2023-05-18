@@ -3,6 +3,7 @@
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IHotel {
+  _id?: any;
   name: string;
   address: string;
   city: string;
@@ -11,7 +12,7 @@ export interface IHotel {
   rooms?: [
 
   ];
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 export interface IHotelModel extends IHotel, Document {}
