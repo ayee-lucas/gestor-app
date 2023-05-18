@@ -56,10 +56,10 @@ const HotelSlide = () => {
             {hotelData?.name}
           </h1>
 
-          <div className=" flex justify-between  py-3 px-1">
+          <div className=" flex justify-between py-3 px-1">
             <Rating rating={hotelData?.rating} />
             <div>
-              <span className="font-black px-3">{hotelData?.city}</span>{" "}
+              <span className="font-black px-3">{hotelData?.city}</span>
               {hotelData?.address}
             </div>
           </div>
@@ -73,7 +73,10 @@ const HotelSlide = () => {
               href={`/Home/hotel/${hotelData?._id}`}
               className="px-4 py-2 hover:bg-indigo-500 hover:text-white rounded-md transition-all border border-indigo-500 text-indigo-900 "
             >
+              <span className=" animate-bounce">
+
               See more!
+              </span>
             </Link>
           </div>
         </div>

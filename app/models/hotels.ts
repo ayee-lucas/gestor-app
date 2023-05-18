@@ -1,5 +1,9 @@
 "use strict";
+
 import { IRoom } from "./rooms";
+import { IUser } from "./User";
+
+
 
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
@@ -71,6 +75,8 @@ const hotelSchema = new Schema(
     versionKey: false,
   }
 );
+
+
 
 const Hotel = (models.Hotel ||
   mongoose.model<IHotelModel>("Hotel", hotelSchema)) as typeof models.Hotel &
