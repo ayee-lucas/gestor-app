@@ -26,19 +26,28 @@ const HotelSlide = () => {
 
   return (
     <div className="w-full h-full border border-indigo-300 max-h-[800px] overflow-auto">
-      <div className="relative flex flex-col min-h-[400px] w-full p-5 overflow-hidden z-3">
-        <Image
-          src={
-            "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80"
-          }
-          alt="location"
-          className="absolute -z-[1]"
-          width={1000}
-          height={1000}
-        />
+      <div className="flex flex-col min-h-[300px] w-full p-5 overflow-hidden z-3 rounded-2xl">
         <div className="flex justify-between py-4 px-3 items-center w-full">
-          <h1 className="text-4xl font-bold text-white mix-blend-difference">{selectedHotel.country}</h1>
-          <h2>{}</h2>
+          <h1 className="text-3xl font-bold text-black  ">
+            {selectedHotel.country}
+          </h1>
+        </div>
+        <div className=" flex justify-between py-4 px-3 items-center w-full
+         max-h-[300px] overflow-hidden rounded-2xl 
+        ">
+          <Image
+            src={
+              "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80"
+            } 
+            alt="location"
+            className="mt-[4rem] py-3 -z-[1]"
+            width={1000}
+            height={500}
+          />
+        </div>
+        <div className="w-full">
+          0
+
         </div>
       </div>
 
