@@ -18,7 +18,6 @@ const RoomCard = ({
   shortDescription,
   price,
   type,
-  location,
   rating,
   image,
   number,
@@ -67,7 +66,7 @@ const RoomCard = ({
               <br />
               <span className="text-lg">{hotel?.name}</span>
               <br />
-              <span className="text-lg font-medium">{location}</span>
+              <span className="text-lg font-medium">{hotel?.city}</span>
             </div>
             <p className="text-gray-700 dark:text-gray-400 text-base">
               {shortDescription}

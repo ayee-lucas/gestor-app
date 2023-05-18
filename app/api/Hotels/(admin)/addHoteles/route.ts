@@ -1,5 +1,5 @@
 import dbConnect from "@/app/utils/DatabaseConnection";
-import Hotel from "@/app/models/hotels";
+import Hotel, { IHotel } from "@/app/models/hotels";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { NextRequest, NextResponse } from "next/server";
@@ -9,6 +9,7 @@ dbConnect();
 
 export async function POST(request: NextRequest) {
   try {
+
     const session = await getServerSession(authOptions);
 
     // Verificar si el usuario está autenticado y es un administrador
@@ -18,11 +19,12 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const { name, admin, address, city, country, rating, rooms } = await request.json();
+    const { name, admin, address, city,  country, rating, description, rooms }:IHotel = await request.json();
 
     // Crear un nuevo objeto Hotel con los datos proporcionados
     const hotelData = {
       name,
+      description,
       admin,
       address,
       city,

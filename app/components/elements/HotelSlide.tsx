@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
-
 import { HotelsContext } from "@/app/(user)/Home/HotelClient";
-import LocationCard from "./LocationCard";
 import { IRoom } from "@/app/models/rooms";
 import RoomCard from "../Home/RoomCard";
 import Image from "next/image";
+import Rating from "./Rating";
 
 const HotelSlide = () => {
   const { selectedHotel, rightSlide } = useContext(HotelsContext);
@@ -12,61 +11,72 @@ const HotelSlide = () => {
   const roomData = selectedHotel.rooms;
   const hotelData = selectedHotel;
 
-  if (rightSlide == false) {
-    return (
-      <div className="w-full h-full">
-        <LocationCard />
-      </div>
-    );
-  }
 
-  if (!roomData?.[0]?.number) {
-    return <div>Loading...</div>;
-  }
 
   return (
-    <div className="w-full h-full border border-indigo-300 max-h-[800px] overflow-auto">
+    <div
+      className={
+        rightSlide
+          ? "fixed transition-all z-50 right-0 top-0 bottom-0 w-full max-w-[900px] h-screen bg-white  border border-indigo-300 overflow-auto"
+          : "fixed transition-all z-50 right-[100%]   top-0 bottom-0 w-full max-w-[900px] h-screen bg-white  border border-indigo-300 overflow-auto"
+      }
+    >
       <div className="flex flex-col min-h-[300px] w-full p-5 overflow-hidden z-3 rounded-2xl">
-        <div className="flex justify-between py-4 px-3 items-center w-full">
-          <h1 className="text-3xl font-bold text-black  ">
+        <div className="flex justify-between px-3 items-center w-full">
+          <h1 className="text-2xl font-light text-black">
             {selectedHotel.country}
           </h1>
         </div>
-        <div className=" flex justify-between py-4 px-3 items-center w-full
+        <div
+          className=" flex justify-between py-4 px-3 items-center w-full
          max-h-[300px] overflow-hidden rounded-2xl 
-        ">
+        "
+        >
           <Image
             src={
               "https://images.unsplash.com/photo-1599940824399-b87987ceb72a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2127&q=80"
-            } 
+            }
             alt="location"
             className="mt-[4rem] py-3 -z-[1]"
             width={1000}
             height={500}
           />
         </div>
-        <div className="w-full">
-          0
+        <div className="w-full flex flex-col px-4 py-3">
+          <h1 className="text-3xl text-black  ">{hotelData?.name}</h1>
 
+          <div className=" py-3 px-4">
+            <Rating rating={hotelData?.rating} />
+          </div>
+
+          <div className="flex items-center justify-center px-2 py-3">
+            <p className=" font-light">{hotelData?.description}</p>
+          </div>
         </div>
       </div>
 
+      <h1 className="text-5xl font-bold text-indigo-500 mt-10 px-11">Rooms</h1>
       <div className="flex flex-wrap justify-evenly p-7  items-center gap-4">
-        {roomData?.map((room: IRoom) =>
-          room?.available ? (
-            <RoomCard
-              available
-              description={room.description}
-              image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-              price={room.price}
-              hotel={hotelData}
-              location={room.location}
-              number={room.number}
-              rating={room.rating}
-              type={room.type}
-              key={room.number}
-            />
-          ) : null
+        {roomData?.[0]?.number ? (
+          roomData?.map((room: IRoom) =>
+            room?.available ? (
+              <RoomCard
+                available
+                description={room.description}
+                image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+                price={room.price}
+                hotel={hotelData}
+                number={room.number}
+                rating={room.rating}
+                type={room.type}
+                key={room.number}
+              />
+            ) : null
+          )
+        ) : (
+          <div className="text-center text-xl text-gray-600">
+            No rooms available at the moment :( <br /> Check again later tho!
+          </div>
         )}
       </div>
     </div>

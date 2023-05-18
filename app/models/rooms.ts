@@ -9,7 +9,6 @@ export interface IRoom {
   price: number;
   rating: number;
   shortDescription?: string; // corrected property name
-  location: string;
   image: string;
   hotel?: IHotel;
   available: boolean;

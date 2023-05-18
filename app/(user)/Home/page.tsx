@@ -1,8 +1,11 @@
-import HotelCardSm, { IHotelCardSm } from "@/app/components/Home/HotelCardSm";
 import RoomCard from "@/app/components/Home/RoomCard";
+import { IHotel } from "@/app/models/hotels";
 import { IRoom } from "@/app/models/rooms";
+import HotelCardSm from "@/app/components/Home/HotelCardSm";
 
 const url = process.env.NEXTAUTH_URL as string;
+
+
 
 async function getRooms() {
   const res = await fetch(`${url}/api/Rooms/`, {
@@ -29,9 +32,10 @@ async function getHotels() {
 }
 
 export default async function Home() {
+
   const roomsData = await getRooms();
 
-  const hotelsData = await getHotels();
+  const hotelsData:IHotel[] = await getHotels();
 
   return (
     <>
@@ -41,13 +45,16 @@ export default async function Home() {
             Sophisticated
           </h1>
           <div className="grid grid-flow-col gap-4 col-auto overflow-x-auto p-6 scrollbar-thin dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-800 scrollbar-thumb-blue-700 scrollbar-track-blue-300 scroll-smooth">
-            {hotelsData.map((hotel: IHotelCardSm) => (
+            {hotelsData.map((hotel: IHotel) => (
               <HotelCardSm
                 name={hotel.name}
                 country={hotel.country}
                 city={hotel.city}
                 rating={hotel.rating}
                 address={hotel.address}
+                description={hotel.description}
+                rooms={hotel.rooms}
+
               />
             ))}
           </div>
@@ -62,7 +69,6 @@ export default async function Home() {
               hotel={room.hotel}
               number={room.number}
               available={room.available}
-              location={room.location}
               description={room.description}
               shortDescription={room.shortDescription}
               image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"

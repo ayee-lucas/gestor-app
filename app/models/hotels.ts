@@ -7,6 +7,7 @@ export interface IHotel {
   name?: string;
   admin?: string;
   address?: string;
+  description?: string;
   city?: string;
   country?: string;
   rating?: number;
@@ -28,6 +29,13 @@ const hotelSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "User",
       required: [true, "User is required."],
+    },
+    description: {
+      type: String,
+      maxlength: [500, "Description cannot exceed 500 characters."],
+      default: "",
+      trim: true,
+      required: false,
     },
     address: {
       type: String,
@@ -62,7 +70,6 @@ const hotelSchema = new Schema(
     versionKey: false,
   }
 );
-
 
 const Hotel = (models.Hotel ||
   mongoose.model<IHotelModel>("Hotel", hotelSchema)) as typeof models.Hotel &
