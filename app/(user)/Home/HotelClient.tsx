@@ -59,7 +59,7 @@ const HotelClient = ({ hotelsData }: { hotelsData: IHotel[] }) => {
             <div>
               <h1 className="text-4xl  pb-3 font-bold text-black">
                 {
-                    rightSlide ?  "Rooms" :  "Locations" 
+                    rightSlide ?  selectedHotel.name :  "Locations" 
                 }
               </h1>
             </div>
