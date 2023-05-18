@@ -3,6 +3,10 @@ import AddService from "./AddService";
 import ServiceRow from "./ServiceRow";
 import { IService } from "@/app/models/services";
 
+interface Props extends IService{
+    _id?: any;
+}
+
 const ServiceTable = () => {
 
     const [services, setServices] = useState<IService[]>([]);
@@ -49,7 +53,7 @@ const ServiceTable = () => {
                             </thead>
 
                             <tbody className="bg-white dark:bg-slate-800">
-                                {services.map((service: IService) => (
+                                {services.map((service: Props) => (
                                     <ServiceRow key={service.name} name={service.name} description={service.description} price={service.price} createdAt={service.createdAt}/>
                                 ))}
                             </tbody>
