@@ -34,7 +34,6 @@ export default async function Home() {
 
   const hotelsData: IHotel[] = await getHotels();
 
-  console.log(roomsData)
 
   // Sort rooms by availability (available rooms first)
   roomsData.sort((a: IRoom, b: IRoom) => {
