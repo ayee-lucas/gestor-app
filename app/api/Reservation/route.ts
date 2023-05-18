@@ -37,6 +37,10 @@ export async function POST(request: NextRequest) {
     return NextResponse.redirect(`${url}/account/login`);
   }
   
+  if (session?.user.role !== "admin") {
+    return NextResponse.json({ message: "no authorized" }, { status: 401 });
+  }
+  
   try {
     const json = await request.json();
     json.user = session?.user.id;
@@ -51,9 +55,16 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const reservation = new Reservation(json);
+    const reservationDate = new Date(json.createdAt);
 
-    console.log({reservationBackend: reservation})
+    if (reservationDate < new Date()) {
+      // La fecha de reserva es anterior al día presente
+      return new NextResponse("Invalid reservation date", {
+        status: 400,
+      });
+    }
+
+    const reservation = new Reservation(json);
 
     const savedReservation = await reservation.save();
 
