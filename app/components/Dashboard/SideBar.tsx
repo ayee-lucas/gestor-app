@@ -12,7 +12,14 @@ import {
 import Link from "next/link";
 
 const SideBar = () => {
-  const { handleMenu }: NavigationContextType = useContext(NavigationContext);
+  const { handleMenu, setMenu }: NavigationContextType = useContext(NavigationContext);
+
+  const handleClick = (selectedMenu: string) => {
+    if (setMenu) {
+      setMenu(selectedMenu);
+      localStorage.setItem("menu", selectedMenu);
+    }
+  };
 
   return (
     <div>
@@ -28,36 +35,36 @@ const SideBar = () => {
             <NavSideBar
               name={"Dashboard"}
               Icon={<AiOutlineHome />}
-              handleMenu={handleMenu}
+              handleMenu={handleClick}
               menu={"Dashboard"}
             />
             <NavSideBar
               name={"User"}
-              handleMenu={handleMenu}
+              handleMenu={handleClick}
               Icon={<AiOutlineUser />}
               menu="User"
             />
             <NavSideBar
               name={"Hotels"}
-              handleMenu={handleMenu}
+              handleMenu={handleClick}
               Icon={<AiOutlineBank />}
               menu="Hotels"
             />
             <NavSideBar
               name={"Rooms"}
-              handleMenu={handleMenu}
+              handleMenu={handleClick}
               Icon={<AiOutlineDatabase />}
               menu="Rooms"
             />
             <NavSideBar
               name={"Events"}
-              handleMenu={handleMenu}
+              handleMenu={handleClick}
               Icon={<AiOutlineGift />}
               menu="Events"
             />
             <NavSideBar
               name={"Services"}
-              handleMenu={handleMenu}
+              handleMenu={handleClick}
               Icon={<AiOutlineRise />}
               menu="Services"
             />
