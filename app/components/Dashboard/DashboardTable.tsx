@@ -160,44 +160,44 @@ const DashboardTable = () => {
       <div>
         <div className="flex flex-col mt-6">
           <div className="overflow-x-auto rounded-lg">
-            <div className="inline-block min-w-full align-middle">
+            <div className="inline-block min-w-full align-middle overflow-h-auto max-h-[400px]">
               <div className="overflow-hidden shadow sm:rounded-lg">
-                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600">
-                  <thead className="bg-gray-50 dark:bg-gray-700">
+                <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-600 ">
+                  <thead className="bg-indigo-700 dark:bg-gray-700">
                     <tr>
                       <th
                         scope="col"
-                        className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                        className="p-4 text-xs font-medium tracking-wider text-left uppercase text-white"
                       >
                         Transaction
                       </th>
                       <th
                         scope="col"
-                        className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                        className="p-4 text-xs font-medium tracking-wider text-left uppercase text-white"
                       >
                         Date & Time
                       </th>
                       <th
                         scope="col"
-                        className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                        className="p-4 text-xs font-medium tracking-wider text-left uppercase text-white"
                       >
                         Amount
                       </th>
                       <th
                         scope="col"
-                        className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                        className="p-4 text-xs font-medium tracking-wider text-left  uppercase text-white"
                       >
                         Reference number
                       </th>
                       <th
                         scope="col"
-                        className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                        className="p-4 text-xs font-medium tracking-wider text-left uppercase text-white"
                       >
                         Payment method
                       </th>
                       <th
                         scope="col"
-                        className="p-4 text-xs font-medium tracking-wider text-left text-gray-500 uppercase dark:text-white"
+                        className="p-4 text-xs font-medium tracking-wider text-left uppercase text-white"
                       >
                         Status
                       </th>
@@ -209,6 +209,7 @@ const DashboardTable = () => {
                     <DashboardRow name={"María Torres"} date={"January, 10 2023"} price={"$150"} numbers={"0078996543"} number={"543"} status={"Completed"}/>
                     <DashboardRow name={"Ana Martínez"} date={"September, 5 2023"} price={"$550"} numbers={"0098745621"} number={"621"} status={"Pending"}/>
                     <DashboardRow name={"Carlos Rodríguez"} date={"July, 18 2023"} price={"$350"} numbers={"0012345678"} number={"678"} status={"Completed"}/>
+                    <DashboardRow name={"Luisa Herrera"} date={"February, 22 2023"} price={"$180"} numbers={"0054321098"} number={"098"} status={"Cancelled"}/>
                     <DashboardRow name={"Luisa Herrera"} date={"February, 22 2023"} price={"$180"} numbers={"0054321098"} number={"098"} status={"Cancelled"}/>
                   </tbody>
                 </table>

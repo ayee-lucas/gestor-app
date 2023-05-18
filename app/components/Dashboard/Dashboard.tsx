@@ -6,7 +6,7 @@ const Dashboard = () => {
     return(
         <div>
             <div
-              className="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-indigo-800 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
+              className="flex items-center justify-between p-4 mb-8 text-sm font-semibold text-purple-100 bg-indigo-700 rounded-lg shadow-md focus:outline-none focus:shadow-outline-purple"
             >   
               <div className="flex items-center">
                 <svg
