@@ -19,7 +19,7 @@ async function getRooms() {
 
 async function getHotels() {
   const res = await fetch(`${url}/api/Hotels/`, {
-    next: { revalidate: 100 },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error(res.statusText);
@@ -33,6 +33,8 @@ export default async function Home() {
   const roomsData = await getRooms();
 
   const hotelsData: IHotel[] = await getHotels();
+
+  console.log(roomsData)
 
   // Sort rooms by availability (available rooms first)
   roomsData.sort((a: IRoom, b: IRoom) => {
