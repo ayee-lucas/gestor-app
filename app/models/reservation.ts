@@ -22,6 +22,11 @@ const reservationSchema = new Schema({
     ref: "User",
     required: [true, "User is required."],
   },
+  room: {
+    type: Schema.Types.ObjectId,
+    ref: "Room",
+    required: [true, "Room is required."],
+  },
   attendees: {
     type: Number,
     required: [true, "Number of attendees is required."],
@@ -30,7 +35,7 @@ const reservationSchema = new Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now,
+    required: true
   },
 },
 {
