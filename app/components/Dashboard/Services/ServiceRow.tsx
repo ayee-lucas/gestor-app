@@ -3,9 +3,15 @@ import { ServiceViewContext, ServiceViewContextType } from "./Service";
 import DeleteService from "./DeleteService";
 import { IService } from "@/app/models/services";
 
-const ServiceRow = ({ name, description, price}: IService) => {
+interface PropsRow extends IService {
+  _id?: any;
+}
+
+const ServiceRow = ({ name, description, price, _id }: PropsRow) => {
   const { setMenu }: ServiceViewContextType = useContext(ServiceViewContext);
   const [deletePopup, setDeletePopup] = useState(false);
+
+  console.log({_id: _id})
 
   const handleMenu = (param: string) => {
     setMenu(param);
@@ -40,6 +46,12 @@ const ServiceRow = ({ name, description, price}: IService) => {
         </div>
       </td>
 
+      <td className="px-6 py-4 whitespace-no-wrap border-b dark:border-gray-700 border-gray-200">
+        <div className="text-sm leading-5 dark:text-white text-gray-900">
+          {_id}
+        </div>
+      </td>
+
       <td className="px-6 py-4 whitespace-no-wrap text-right border-b dark:border-gray-700 border-gray-200 text-sm leading-5 font-medium">
         <div className="flex justify-between px-3">
           <button
@@ -54,10 +66,7 @@ const ServiceRow = ({ name, description, price}: IService) => {
           >
             Delete
           </button>
-          <DeleteService
-            trigger={deletePopup}
-            setTrigger={setDeletePopup}
-          />
+          <DeleteService trigger={deletePopup} _id={_id} setTrigger={setDeletePopup} />
         </div>
       </td>
     </tr>

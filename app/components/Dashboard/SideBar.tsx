@@ -12,13 +12,11 @@ import {
 import Link from "next/link";
 
 const SideBar = () => {
-    const { handleMenu }:NavigationContextType = useContext(NavigationContext);
+  const { handleMenu }: NavigationContextType = useContext(NavigationContext);
 
-    return(
-        <div>
-            <nav
-        className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-indigo-800 md:block flex-shrink-0 h-screen"
-      >
+  return (
+    <div>
+      <nav className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-indigo-800 md:block flex-shrink-0 h-screen">
         <div className="py-4 text-gray-700 dark:text-gray-200">
           <a
             className="ml-6 text-xl font-bold text-gray-700 dark:text-gray-200"
@@ -27,31 +25,59 @@ const SideBar = () => {
             Roomfly
           </a>
           <ul className="mt-6">
-            <NavSideBar name={"Dashboard"} Icon={<AiOutlineHome />} fn={handleMenu}  />
-            <NavSideBar name={"User"} Icon={<AiOutlineUser />} fn={handleMenu}/>
-            <NavSideBar name={"Hotels"} Icon={<AiOutlineBank />} fn={handleMenu} />
-            <NavSideBar name={"Rooms"} Icon={<AiOutlineDatabase />} fn={handleMenu} />
-            <NavSideBar name={"Events"} Icon={<AiOutlineGift />} fn={handleMenu}  />
-            <NavSideBar name={"Services"} Icon={<AiOutlineRise />}  fn={handleMenu}  />
+            <NavSideBar
+              name={"Dashboard"}
+              Icon={<AiOutlineHome />}
+              handleMenu={handleMenu}
+              menu={"Dashboard"}
+            />
+            <NavSideBar
+              name={"User"}
+              handleMenu={handleMenu}
+              Icon={<AiOutlineUser />}
+              menu="User"
+            />
+            <NavSideBar
+              name={"Hotels"}
+              handleMenu={handleMenu}
+              Icon={<AiOutlineBank />}
+              menu="Hotels"
+            />
+            <NavSideBar
+              name={"Rooms"}
+              handleMenu={handleMenu}
+              Icon={<AiOutlineDatabase />}
+              menu="Rooms"
+            />
+            <NavSideBar
+              name={"Events"}
+              handleMenu={handleMenu}
+              Icon={<AiOutlineGift />}
+              menu="Events"
+            />
+            <NavSideBar
+              name={"Services"}
+              handleMenu={handleMenu}
+              Icon={<AiOutlineRise />}
+              menu="Services"
+            />
           </ul>
-          
         </div>
         <div className="z-20 hidden w-64 overflow-y-auto bg-white dark:bg-indigo-800 md:block flex-shrink-0">
-        <div className="text-gray-500 dark:text-gray-400">
+          <div className="text-gray-500 dark:text-gray-400">
             <div className="px-5 items-end">
-                <Link
+              <Link
                 href="/Home"
                 className="flex items-center justify-between px-4 py-2 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-indigo-600 border border-transparent rounded-lg hover:bg-indigo-500 focus:outline-none focus:shadow-outline-purple"
-                >
+              >
                 Back Home
-                </Link>
+              </Link>
             </div>
+          </div>
         </div>
-       </div>
       </nav>
-      
     </div>
-    );
-}
+  );
+};
 
 export default SideBar;

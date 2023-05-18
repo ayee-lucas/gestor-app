@@ -21,7 +21,7 @@ const ServiceTable = () => {
           
             if (!res.ok) throw new Error(res.statusText);
           
-            const services: IService[] = await res.json();
+            const services: Props[] = await res.json();
             setServices(services)
             console.log(services)
         }  
@@ -47,14 +47,15 @@ const ServiceTable = () => {
                                 <tr>
                                     <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Name</th>
                                     <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Description</th>
-                                    <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">price</th>
+                                    <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Price</th>
+                                    <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Identifier</th>
                                     <th className="px-6 py-3 border-b dark:border-gray-700 border-gray-200 dark:bg-[#100724] bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 dark:text-white uppercase tracking-wider">Options</th>
                                 </tr>
                             </thead>
 
                             <tbody className="bg-white dark:bg-slate-800">
                                 {services.map((service: Props) => (
-                                    <ServiceRow key={service.name} name={service.name} description={service.description} price={service.price} createdAt={service.createdAt}/>
+                                    <ServiceRow key={service.name} name={service.name} description={service.description} price={service.price} createdAt={service.createdAt} _id={service._id}  />
                                 ))}
                             </tbody>
                         </table>
