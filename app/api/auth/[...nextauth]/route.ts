@@ -8,7 +8,7 @@ dbConnect();
 
 const url = process.env.NEXTAUTH_URL as string;
 
-console.log({ nextauth: `${url}api/User/login}` });
+console.log({ nextauth: `${url}/api/User/login}` });
 
 export const authOptions: NextAuthOptions = {
   providers: [

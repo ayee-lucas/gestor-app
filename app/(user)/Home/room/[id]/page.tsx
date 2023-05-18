@@ -1,9 +1,16 @@
 import Room from "@/app/models/rooms";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import { AiOutlineArrowLeft, AiOutlineSwapRight } from "react-icons/ai";
 import Link from "next/link";
 import Rating from "@/app/components/elements/Rating";
 import Image from "next/image";
 import Hotel from "@/app/models/hotels";
+import { revalidatePath } from "next/cache";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import Reservation from "@/app/models/reservation";
+
+const url = process.env.NEXTAUTH_URL as string;
 
 export default async function RoomId({ params }: { params: { id: string } }) {
   async function getRoom() {
@@ -13,6 +20,43 @@ export default async function RoomId({ params }: { params: { id: string } }) {
     });
 
     return room;
+  }
+
+  const session = await getServerSession(authOptions);
+
+  if (session?.user.name === undefined) {
+    return redirect(`${url}/account/login`);
+  }
+
+  async function postReservation(data: FormData) {
+    "use server";
+
+    const room = data.get("room");
+    const attendees = data.get("attendees");
+
+    const json = { room, attendees };
+
+    console.log({ room, attendees });
+    console.log({ url: `${url}/api/Reservation/` });
+
+    const roomData = await Room.findById(room);
+
+    if (!roomData || !roomData.available) {
+      console.log("Room not available");
+      throw new Error("Error");
+    }
+
+    const reservation = new Reservation(json);
+
+    const saveReservation = await reservation.save();
+
+    console.log(saveReservation);
+
+    roomData.available = false;
+
+    await roomData.save();
+
+    revalidatePath(`/Home/room/${room}`);
   }
 
   const roomData = await getRoom();
@@ -51,6 +95,7 @@ export default async function RoomId({ params }: { params: { id: string } }) {
                   <th>Country</th>
                   <th>Rating</th>
                   <th>Price</th>
+                  <th>Available</th>
                   <th>Room #</th>
                 </tr>
               </thead>
@@ -63,6 +108,14 @@ export default async function RoomId({ params }: { params: { id: string } }) {
                     {roomData.hotel.rating}{" "}
                   </td>
                   <td className=" border-r to-black">{roomData.price} </td>
+                  <td>
+                    {roomData.available ? (
+                      <span> Yes </span>
+                    ) : (
+                      <span> No </span>
+                    )}
+                  </td>
+
                   <td className=" border-r to-black">{roomData.number} </td>
                 </tr>
               </tbody>
@@ -72,6 +125,36 @@ export default async function RoomId({ params }: { params: { id: string } }) {
           <div className=" py-3">
             <Rating rating={roomData.rating} />
           </div>
+          <form action={postReservation}>
+            <label className=" px-3">People</label>
+            <input
+              type="text"
+              className=" border text-center border-black"
+              name="attendees"
+              defaultValue={1}
+            />
+            <label className=" px-3"> Room </label>
+            <input
+              type="text"
+              className=" border text-center border-black"
+              name="room"
+              defaultValue={params.id}
+            />
+            <label className=" px-3"></label>
+
+            <input type="text" name="user" defaultValue={session?.user.id} />
+
+            <button
+              type="submit"
+              disabled={roomData.available ? false : true}
+              className="flex items-center w-full mt-4 p-3 transition-all
+              hover:bg-indigo-700 hover:text-white rounded-md disabled:hover:bg-red-700 disabled:hover:text-white
+              "
+            >
+              <span> Book Now</span>
+              <AiOutlineSwapRight className="text-2xl ml-4" />
+            </button>
+          </form>
         </div>
       </div>
     </div>

@@ -51,11 +51,12 @@ const RoomPopUp = () => {
               />
               <PopUpTable available={available} rating={rating} type={type} />
 
-              <Link className="flex items-center w-full mt-4 p-3 transition-all
+              <Link 
+              className="flex items-center w-full mt-4 p-3 transition-all
               hover:bg-indigo-700 hover:text-white rounded-md
               
               " href={`/Home/room/${_id}`}>
-                <span> Book Now</span>
+                <span> Book Now </span>
                 <AiOutlineSwapRight className="text-2xl ml-4" />
               </Link>
             </div>

@@ -26,6 +26,8 @@ async function getLocations() {
   return locations;
 }
 
+
+
 export default async function HotelsPage() {
   const locationsData = await fetchHotels();
   const hotelsData = await fetchHotels();
