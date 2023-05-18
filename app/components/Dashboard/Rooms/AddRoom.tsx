@@ -1,7 +1,47 @@
-import React from "react";
-import Form from "./Form";
+import React, { useState } from "react";
+import FormRoom from "./Form";
+import { IRoom } from "@/app/models/rooms"; 
 
 const AddRoom = (props: any) => {
+
+  const [number, setNumber] = useState("");
+  const [type, setType] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState(0);
+  const [rating, setRating] = useState(0);
+  const [image, setImage] = useState("");
+  const [available, setAvailable] = useState(true);
+
+  const handleSave = async () => {
+    const newRoom: IRoom = {
+      number,
+      type,
+      description,
+      price,
+      rating,
+      image,
+      available
+    };
+
+    try {
+      const res = await fetch("/api/Rooms/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newRoom),
+      });
+
+      if (!res.ok) throw new Error(res.statusText);
+
+      // Lógica adicional después de guardar el servicio...
+
+      props.setTrigger(false);
+    } catch (error) {
+      console.log(newRoom)
+      console.error("Error saving room:", error);
+    }
+  };
 
   return props.trigger ? (
     <div className="fixed top-0 left-0 w-[100%] h-[100vh] bg-[#00000066] flex justify-center items-center ">
@@ -13,27 +53,42 @@ const AddRoom = (props: any) => {
 
           <form>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 mt-2">
-              <Form name="Number" type="text" />
-              <Form name="Type" type="text" />
-              <Form name="Price" type="number" />
-              <Form name="Short Description" type="text" />
-              <Form name="Location" type="text" />
-              <div>
-                <label
-                  className="text-gray-700 dark:text-gray-300"
-                  htmlFor="username"
-                >
-                  Available
-                </label>
-                <select
-                  id="Role"
-                  className="bg-gray-200 form-input w-full px-2 py-1 appearance-none rounded-md focus:border-indigo-600 text-black"
-                >
-                  <option value="volvo">True</option>
-                  <option value="saab">False</option>
-                </select>
-              </div>
-              <Form name="Rating" type="number" />
+              <FormRoom
+                  name="Name"
+                  type="text"
+                  value={number}
+                  onChange={(e:any) => setNumber(e.target.value)}
+                />
+                <FormRoom
+                  name="Type"
+                  type="text"
+                  value={type}
+                  onChange={(e:any) => setType(e.target.value)}
+                />
+                <FormRoom
+                  name="Description"
+                  type="text"
+                  value={description}
+                  onChange={(e:any) => setDescription(e.target.value)}
+                />
+                <FormRoom
+                  name="Price"
+                  type="text"
+                  value={price}
+                  onChange={(e:any) => setPrice(e.target.value)}
+                />
+                <FormRoom
+                  name="Rating"
+                  type="text"
+                  value={rating}
+                  onChange={(e:any) => setRating(e.target.value)}
+                />
+                <FormRoom
+                  name="Available"
+                  type="text"
+                  value={available}
+                  onChange={(e:any) => setAvailable(e.target.value)}
+                />
             </div>
 
             <div className="flex justify-between mt-8">
@@ -44,7 +99,7 @@ const AddRoom = (props: any) => {
                 Cancel
               </button>
               <button
-                onClick={() => props.setTrigger(false)}
+                onClick={handleSave}
                 className="px-4 py-2 bg-gray-00 text-gray-300 rounded-md bg-indigo-700 hover:bg-indigo-500 hover:text-white focus:outline-none focus:bg-indigo-600"
               >
                 Save

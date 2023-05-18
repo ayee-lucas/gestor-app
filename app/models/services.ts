@@ -6,7 +6,7 @@ export interface IService {
     name: string;
     description: string;
     price: number;
-    createdAt: Date;
+    createdAt?: Date;
 }
 
 export interface IServiceModel extends IService, Document { }

@@ -50,7 +50,8 @@ const roomSchema = new Schema(
     },
     location: {
       type: String,
-      required: [true, "Room location is required."],
+      default: "",
+      //required: [true, "Room location is required."],
     },
     hotel: {
       type: Schema.Types.ObjectId,

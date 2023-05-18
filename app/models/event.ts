@@ -8,7 +8,7 @@ export interface IEvent {
   description: string;
   price: number;
   maxCapacity: number;
-  createdAt: Date;
+  createdAt?: Date;
 }
 
 export interface IEventModel extends IEvent, Document {}

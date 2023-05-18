@@ -19,7 +19,7 @@ const DashboardRow = ({name='', date='', price='', numbers='', number='', status
             <svg
             className="w-7 h-7"
             aria-hidden="true"
-            enable-background="new 0 0 780 500"
+            enableBackground="new 0 0 780 500"
             viewBox="0 0 780 500"
             xmlns="http://www.w3.org/2000/svg"
             >
