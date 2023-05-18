@@ -142,16 +142,14 @@ export default async function RoomId({ params }: { params: { id: string } }) {
               type="text"
               className=" border opacity-0 text-center"
               name="room"
-              disabled
               defaultValue={params.id}
             />
             <label className=" px-3">User:</label>
-            <label className="px-3">{session?.user.name}</label>
+            <label className="px-3 opacity-0">{session?.user.name}</label>
 
             <input
               type="text"
-              disabled
-              className=" border text-center opacity-0 "
+              className=" border  text-center absolute opacity-0 max-w-[100px] "
               name="user"
               defaultValue={session?.user.id}
             />

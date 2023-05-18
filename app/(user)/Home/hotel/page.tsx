@@ -4,7 +4,7 @@ const url = process.env.NEXTAUTH_URL as string;
 
 async function fetchHotels() {
   const res = await fetch(`${url}/api/Hotels/`, {
-    next: { revalidate: 100 },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error(res.statusText);
@@ -16,7 +16,7 @@ async function fetchHotels() {
 
 async function getLocations() {
   const res = await fetch(`${url}/api/Locations/`, {
-    next: { revalidate: 100 },
+    cache: "no-store",
   });
 
   if (!res.ok) throw new Error(res.statusText);
