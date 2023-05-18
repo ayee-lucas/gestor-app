@@ -1,14 +1,14 @@
 import dbConnect from "@/app/utils/DatabaseConnection";
-import Room from "@/app/models/rooms";
+import Locations from "@/app/models/locations";
 import { NextRequest, NextResponse } from "next/server";
 
 // Connect to the database
 dbConnect();
 
 interface params extends Request {
-  params: {
-    id: string;
-  };
+    params: {
+      id: string;
+    };
 }
 
 export async function GET(request: Request, params: params) {
@@ -16,13 +16,13 @@ export async function GET(request: Request, params: params) {
     const id = params.params.id;
   
     try {
-      const room = await Room.findById(id).populate("hotel");
-      if (!room) {
+      const locations = await Locations.findById(id);
+      if (!locations) {
         return new NextResponse("Service not found", {
           status: 404,
         });
       }
-      return new NextResponse(JSON.stringify(room), {
+      return new NextResponse(JSON.stringify(locations), {
         status: 200,
       });
     } catch (err) {
@@ -38,13 +38,13 @@ export async function GET(request: Request, params: params) {
     const data = await request.json();
   
     try {
-      const room = await Room.findByIdAndUpdate(id, data, { new: true });
-      if (!room) {
+      const locations = await Locations.findByIdAndUpdate(id, data, { new: true });
+      if (!locations) {
         return new NextResponse("Service not found", {
           status: 404,
         });
       }
-      return new NextResponse(JSON.stringify(room), {
+      return new NextResponse(JSON.stringify(locations), {
         status: 200,
       });
     } catch (err) {
@@ -59,13 +59,13 @@ export async function GET(request: Request, params: params) {
     const id = params.params.id;
   
     try {
-      const room = await Room.findByIdAndDelete(id);
-      if (!room) {
+      const location = await Locations.findByIdAndDelete(id);
+      if (!location) {
         return new NextResponse("Service not found", {
           status: 404,
         });
       }
-      return new NextResponse(JSON.stringify(room), {
+      return new NextResponse(JSON.stringify(location), {
         status: 200,
       });
     } catch (err) {

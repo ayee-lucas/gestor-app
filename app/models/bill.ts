@@ -23,7 +23,6 @@ const billSchema = new Schema(
   {
     issueDate: {
       type: Date,
-      required: true,
       default: Date.now,
     },
     user: {
