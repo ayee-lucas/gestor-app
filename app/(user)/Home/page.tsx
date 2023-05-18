@@ -34,6 +34,17 @@ export default async function Home() {
 
   const hotelsData: IHotel[] = await getHotels();
 
+  // Sort rooms by availability (available rooms first)
+  roomsData.sort((a: IRoom, b: IRoom) => {
+    if (a.available && !b.available) {
+      return -1; // a comes before b
+    } else if (!a.available && b.available) {
+      return 1; // b comes before a
+    } else {
+      return 0; // no change in order
+    }
+  });
+
   return (
     <>
       <div className="w-full h-full dark:bg-zinc-950">
