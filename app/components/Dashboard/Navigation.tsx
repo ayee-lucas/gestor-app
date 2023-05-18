@@ -5,6 +5,8 @@ import Dashboard from "./Dashboard";
 import User from "./User/User";
 import Hotel from "./Hotel/Hotel";
 import Room from "./Rooms/Room";
+import Event from "./Events/Event";
+import Service from "./Services/Service";
 export interface NavigationContextType {
     setMenu?:any;
     handleMenu?:any;
@@ -36,6 +38,8 @@ const Navigation = () => {
                 {menu === "User" && <User />}
                 {menu === "Hotels" && <Hotel />}
                 {menu === "Rooms" && <Room />}
+                {menu === "Events" && <Event />}
+                {menu === "Services" && <Service />}
             </div>
         </NavigationContext.Provider>
     );

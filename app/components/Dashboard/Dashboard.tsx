@@ -1,5 +1,6 @@
 import React from "react";
 import Cards from "./Cards";
+import DashboardTable from "./DashboardTable";
 
 const Dashboard = () => {
     return(
@@ -22,6 +23,8 @@ const Dashboard = () => {
               <span>View more</span>
             </div>
             <Cards/>
+            <DashboardTable/>
+
         </div>
     );
 }
