@@ -1,5 +1,5 @@
 "use strict";
-import Hotel from "@/app/models/hotels";
+import Hotel, { IHotel } from "@/app/models/hotels";
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IRoom {
@@ -8,17 +8,9 @@ export interface IRoom {
   description: string;
   price: number;
   rating: number;
-  shortDescription: string; // corrected property name
-  location: string;
+  shortDescription?: string; // corrected property name
   image: string;
-  hotel?: {
-    name: string;
-    admin: string;
-    address: string;
-    city: string;
-    country: string;
-    rating: number;
-  };
+  hotel?: IHotel;
   available: boolean;
   createdAt?: Date;
 }

@@ -8,6 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
 // Conectar a la base de datos
 dbConnect();
 
+
 export async function PUT(request: NextRequest) {
   try {
     const session = await getServerSession(authOptions);
@@ -34,6 +35,13 @@ export async function PUT(request: NextRequest) {
     if (!existingRoom) {
       return new NextResponse("Room not found", {
         status: 404,
+      });
+    }
+
+    // Verificar si el ID del cuarto es igual al ID del hotel
+    if (existingRoom.hotel.toString() !== existingHotel._id.toString()) {
+      return new NextResponse("Invalid room for the hotel", {
+        status: 400,
       });
     }
 

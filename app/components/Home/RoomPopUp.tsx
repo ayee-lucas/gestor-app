@@ -9,6 +9,7 @@ import Image from "next/image";
 import PopUpTable from "./PopUpTable";
 import PopUpText from "./PopUpText";
 
+
 const RoomPopUp = () => {
   const {
     statePop,
@@ -29,7 +30,7 @@ const RoomPopUp = () => {
           className="bg-black absolute inset-0 opacity-25 cursor-pointer"
           onClick={() => setStatePop(!statePop)}
         />
-        <div className="bg-white rounded-md p-5 w-[80%] h-[70%] text-black z-30 animate__animated animate__zoomInDown">
+        <div className="bg-white rounded-md p-5 w-[80%] h-[70%] text-black z-30 animate__animated animate__zoomInUp animate__faster">
           <div className="flex w-full justify-between items-center">
             <span className="text-4xl font-black text-indigo-800">{type}</span>
             <RxCross2

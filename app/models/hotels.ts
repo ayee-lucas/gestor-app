@@ -1,17 +1,18 @@
 "use strict";
+import { IRoom } from "./rooms";
 
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IHotel {
   _id?: any;
-  name: string;
-  address: string;
-  city: string;
-  country: string;
-  rating: number;
-  rooms?: [
-
-  ];
+  name?: string;
+  admin?: string;
+  address?: string;
+  description?: string;
+  city?: string;
+  country?: string;
+  rating?: number;
+  rooms?: IRoom[];
   createdAt?: Date;
 }
 
@@ -22,12 +23,20 @@ const hotelSchema = new Schema(
     name: {
       type: String,
       required: [true, "Hotel name is required."],
-      unique: true
+      unique: true,
+      maxlength: [200, "Hotel name cannot exceed 200 characters."],
     },
     admin: {
       type: Schema.Types.ObjectId,
       ref: "User",
       required: [true, "User is required."],
+    },
+    description: {
+      type: String,
+      maxlength: [500, "Description cannot exceed 500 characters."],
+      default: "",
+      trim: true,
+      required: false,
     },
     address: {
       type: String,
@@ -44,8 +53,9 @@ const hotelSchema = new Schema(
     rating: {
       type: Number,
       required: [true, "Hotel stars is required."],
+      min: [1, "Rating cannot be less than 1."],
+      max: [5, "Rating cannot be greater than 5."],
     },
-
     rooms: [
       {
         type: Schema.Types.ObjectId,

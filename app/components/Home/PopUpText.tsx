@@ -1,14 +1,11 @@
 import React from "react";
 import { playfair } from '@/app/fonts'
+import { IHotel } from "@/app/models/hotels";
 
 interface props {
     price: number,
     description: string,
-    hotel?: {
-        name: string,
-        country: string,
-        city: string,
-    }
+    hotel?:IHotel
 }
 
 

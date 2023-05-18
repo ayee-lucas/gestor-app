@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useSession } from "next-auth/react";
 import Image from "next/image";
 interface Props {
@@ -15,14 +15,14 @@ const UserBlock = ({ setShow, show }: Props) => {
     <div
       className={
         show
-          ? "absolute overflow-hidden right-5 top-2  w-[50px] h-[50px] transition-all select-none cursor-pointer "
-          : "absolute overflow-hidden right-5 top-2 px-2 py-2  w-[300px] h-[60px] transition-all bg-slate-50 bg-opacity-80 rounded-xl flex items-center gap-16 select-none cursor-pointer"
+          ? "fixed z-20 overflow-hidden right-5 top-2  w-[50px] h-[50px] transition-all select-none cursor-pointer "
+          : "fixed z-20 overflow-hidden right-5 top-2 px-2 py-2  w-[300px] h-[60px] transition-all dark:bg-zinc-900 dark:bg-opacity-80 dark:text-white bg-slate-50 bg-opacity-80 rounded-xl flex items-center gap-16 select-none cursor-pointer backdrop-blur-3xl backdrop-saturate-200 drop-shadow-2xl backdrop:shadow-2x"
       }
       onClick={() => setShow(!show)}
     >
       <button
         className={
-          "px-1 py-1 bg-indigo-100 flex max-w-[50px] items-center justify-center rounded-full transition-all"
+          "px-1 py-1 bg-indigo-100 dark:bg-zinc-700 flex max-w-[50px] items-center justify-center rounded-full transition-all"
         }
       >
         <Image
