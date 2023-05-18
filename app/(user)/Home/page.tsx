@@ -5,8 +5,6 @@ import HotelCardSm from "@/app/components/Home/HotelCardSm";
 
 const url = process.env.NEXTAUTH_URL as string;
 
-
-
 async function getRooms() {
   const res = await fetch(`${url}/api/Rooms/`, {
     next: { revalidate: 100 },
@@ -31,11 +29,13 @@ async function getHotels() {
   return hotels;
 }
 
+
 export default async function Home() {
 
   const roomsData = await getRooms();
 
-  const hotelsData:IHotel[] = await getHotels();
+
+  const hotelsData: IHotel[] = await getHotels();
 
   return (
     <>
@@ -54,7 +54,6 @@ export default async function Home() {
                 address={hotel.address}
                 description={hotel.description}
                 rooms={hotel.rooms}
-
               />
             ))}
           </div>

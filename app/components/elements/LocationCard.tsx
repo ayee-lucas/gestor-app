@@ -1,9 +1,12 @@
+import { IHotel } from "@/app/models/hotels";
 import Image from "next/image";
 import React from "react";
 
-const LocationCard = () => {
+
+
+const LocationCard = ({ country, city }: IHotel) => {
   return (
-    <div className="w-full h-full border to-black max-h-[500px] shadow-md select-none hover:bg-slate-50 cursor-pointer">
+    <div className="w-full h-full border my-2 to-black max-h-[500px] shadow-md select-none hover:bg-slate-50 cursor-pointer">
       <div className="w-full h-full flex flex-col max-h-[500px] rounded-lg">
         <div className="w-full max-h-[400px] overflow-hidden">
           <Image
@@ -17,11 +20,8 @@ const LocationCard = () => {
           />
         </div>
         <div className="dark:text-white p-4 font-semibold text-xl">
-            United States <br />
-            <span className="text-gray-400 font-normal">
-
-            Sunnyville
-            </span>
+          { country } <br />
+          <span className="text-gray-400 font-normal">{ city }</span>
         </div>
       </div>
     </div>
