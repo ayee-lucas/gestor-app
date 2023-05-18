@@ -3,6 +3,7 @@ import Hotel, { IHotel } from "@/app/models/hotels";
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IRoom {
+  _id?: any;
   number: string;
   type: string;
   description: string;

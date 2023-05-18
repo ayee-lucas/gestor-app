@@ -41,10 +41,7 @@ const Navbar = () => {
               <Navlinks href="/Home" title="Home" />
             </li>
             <li>
-              <Navlinks href="/Home" title="About" />
-            </li>
-            <li>
-              <Navlinks href="/Home" title="Services" />
+              <Navlinks href="/Home/Events" title="Events" />
             </li>
             <li>
               <Navlinks href="/Home" title="Contact" />

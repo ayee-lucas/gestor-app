@@ -6,6 +6,7 @@ import SearchBar from "@/app/components/elements/SearchBar";
 import HotelCard from "@/app/components/elements/HotelCard";
 import { IHotel } from "@/app/models/hotels";
 import LocationCard from "@/app/components/elements/LocationCard";
+import { ILocation } from "@/app/models/locations";
 
 interface Props extends IHotel {
   rightSlide: boolean;
@@ -14,9 +15,17 @@ interface Props extends IHotel {
   setSelectedHotel: (value: IHotel) => void;
 }
 
+interface PropsHotelClient {
+  hotelsData: IHotel[];
+  locationData: ILocation[];
+}
+
 export const HotelsContext = createContext<Props>({} as Props);
 
-const HotelClient = ({ hotelsData }: { hotelsData: IHotel[] }) => {
+const HotelClient = (
+  { hotelsData, locationData }:PropsHotelClient ,
+
+) => {
   const [rightSlide, setRightSlide] = useState(false);
 
   const [selectedHotel, setSelectedHotel] = useState<IHotel>({} as IHotel);
@@ -44,7 +53,7 @@ const HotelClient = ({ hotelsData }: { hotelsData: IHotel[] }) => {
         onClick={handleRightSlide}
       />
 
-      <HotelSlide  />
+      <HotelSlide />
 
       <div className="w-full min-h-screen dark:bg-zinc-950">
         <h1 className="py-10 px-4 text-indigo-700 text-4xl font-bold text-right">
@@ -73,9 +82,14 @@ const HotelClient = ({ hotelsData }: { hotelsData: IHotel[] }) => {
           </div>
           <div className="relative w-full h-full px-4">
             <div>
-              <h1 className="text-4xl  pb-3 font-bold text-black">
+              <h1 className="text-4xl py-3  pb-3 font-bold text-black">
                 Locations
-                <LocationCard />
+                <div className="py-4">
+                {locationData.map((location: ILocation) => (
+                  <LocationCard country={location.name} city={location.address} key={location.name} />
+                ))}
+                </div>
+
               </h1>
             </div>
           </div>
