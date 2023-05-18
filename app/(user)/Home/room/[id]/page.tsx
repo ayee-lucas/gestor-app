@@ -33,8 +33,9 @@ export default async function RoomId({ params }: { params: { id: string } }) {
 
     const room = data.get("room");
     const attendees = data.get("attendees");
+    const user = data.get("user");
 
-    const json = { room, attendees };
+    const json = { room, attendees, user };
 
     console.log({ room, attendees });
     console.log({ url: `${url}/api/Reservation/` });
@@ -133,16 +134,27 @@ export default async function RoomId({ params }: { params: { id: string } }) {
               name="attendees"
               defaultValue={1}
             />
-            <label className=" px-3"> Room </label>
+            <label className=" px-3"> Room: </label>
+
+            <label className="px-3">{roomData.number}</label>
+
             <input
               type="text"
-              className=" border text-center border-black"
+              className=" border opacity-0 text-center"
               name="room"
+              disabled
               defaultValue={params.id}
             />
-            <label className=" px-3"></label>
+            <label className=" px-3">User:</label>
+            <label className="px-3">{session?.user.name}</label>
 
-            <input type="text" name="user" defaultValue={session?.user.id} />
+            <input
+              type="text"
+              disabled
+              className=" border text-center opacity-0 "
+              name="user"
+              defaultValue={session?.user.id}
+            />
 
             <button
               type="submit"
