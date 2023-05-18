@@ -10,7 +10,6 @@ import RoomCard from "@/app/components/Home/RoomCard";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 
 export default async function hotel({ params }: { params: { id: string } }) {
-
   async function getHotel() {
     const hotel = await Hotel.findOne({ _id: params.id }).populate({
       path: "rooms",
@@ -23,7 +22,6 @@ export default async function hotel({ params }: { params: { id: string } }) {
   const findHotel = await getHotel();
 
   async function getAdmin() {
-
     const idAdmin = findHotel.admin.toString();
 
     const admin = await User.findOne({ _id: idAdmin });
@@ -35,6 +33,8 @@ export default async function hotel({ params }: { params: { id: string } }) {
 
   const admin = await getAdmin();
 
+  const availableRooms = roomData.filter((room: IRoom) => room.available);
+  const unavailableRooms = roomData.filter((room: IRoom) => !room.available);
 
   return (
     <div className="flex flex-col px-5 py-10">
@@ -88,25 +88,74 @@ export default async function hotel({ params }: { params: { id: string } }) {
           </div>
         </div>
       </div>
-      <div className="flex flex-wrap justify-center p-7 items-center gap-4">
-        {findHotel.rooms.length > 0 ? (
-          roomData.map((room: any) =>
-            room.available ? (
-              <RoomCard
-                available
-                description={room.description}
-                image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
-                price={room.price}
-                number={room.number}
-                rating={room.rating}
-                type={room.type}
-                key={room.number}
-              />
-            ) : null
-          )
-        ) : (
-          <div className="text-center text-xl text-gray-600">
-            No rooms available at the moment :( <br /> Check again later tho!
+
+      <div
+        className={
+          unavailableRooms === 0
+            ? "grid grid-cols-2 gap-2"
+            : "flex flex-wrap justify-center p-7 items-center gap-4"
+        }
+      >
+        {availableRooms.length > 0 && (
+          <div>
+            <h1 className=" p-3 text-3xl">Rooms Available</h1>
+
+            <div className="flex flex-wrap justify-center p-7 items-center gap-4">
+              {findHotel.rooms.length > 0 ? (
+                roomData.map((room: any) =>
+                  room.available ? (
+                    <RoomCard
+                      available={room.available}
+                      _id={room._id.toString()}
+                      description={room.description}
+                      image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+                      price={room.price}
+                      number={room.number}
+                      rating={room.rating}
+                      shortDescription={room.shortDescription}
+                      type={room.type}
+                      key={room.number}
+                    />
+                  ) : null
+                )
+              ) : (
+                <div className="text-center text-xl text-gray-600">
+                  No rooms available at the moment :( <br /> Check again later
+                  tho!
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {unavailableRooms.length > 0 && (
+          <div>
+            <h1 className=" p-3 text-3xl">Rooms Unavailable</h1>
+            <div className="flex flex-wrap justify-center p-7 items-center gap-4">
+              {findHotel.rooms.length > 0 ? (
+                roomData.map((room: any) =>
+                  room.available ? null : (
+                    <RoomCard
+                      available
+                      description={room.description}
+                      _id={room._id}
+                      shortDescription={room.shortDescription}
+                      image="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-4.0.3&ixid=Mn wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1171&q=80"
+                      price={room.price}
+                      number={room.number}
+                      rating={room.rating}
+                      type={room.type}
+                      key={room.number}
+                    />
+                  )
+                )
+              ) : (
+                <div className="text-center text-xl text-gray-600">
+                  No rooms available at the moment :( <br /> Check again later
+                  tho!
+                </div>
+              )}
+            </div>
           </div>
         )}
       </div>

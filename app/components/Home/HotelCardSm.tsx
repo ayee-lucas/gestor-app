@@ -14,6 +14,7 @@ const HotelCardSm = ({
   address,
   description,
   rooms,
+  _id,
 }: IHotel) => {
 
 
@@ -22,7 +23,7 @@ const HotelCardSm = ({
   return (
     <>
       <Link
-        href="/Home/hotel?=1232"
+        href={`/Home/hotel/${_id}`}
         className="flex flex-col w-max transition-all items-center bg-white border border-gray-200 dark:bg-zinc-900 dark:border-zinc-700  rounded-lg shadow md:flex-row md:max-w-xl hover:bg-zinc-200 dark:hover:bg-zinc-800 "
       >
         <Image

@@ -19,6 +19,7 @@ const RoomCard = ({
   price,
   type,
   rating,
+  _id,
   image,
   number,
   available,
@@ -41,6 +42,7 @@ const RoomCard = ({
             shortDescription,
             type,
             hotel,
+            _id
           } as props
         }
       >
