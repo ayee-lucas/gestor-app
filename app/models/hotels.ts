@@ -4,6 +4,7 @@ import { IRoom } from "./rooms";
 import mongoose, { Schema, model, models, Document } from "mongoose";
 
 export interface IHotel {
+  _id?: any;
   name?: string;
   admin?: string;
   address?: string;

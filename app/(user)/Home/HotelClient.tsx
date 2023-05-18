@@ -39,7 +39,7 @@ const HotelClient = ({ hotelsData }: { hotelsData: IHotel[] }) => {
         className={
           rightSlide
             ? "fixed cursor-pointer top-0 right-0 bottom-0 left-0  bg-black opacity-40 transition-all z-40"
-            : "fixed cursor-pointer  top-0 right-[100%] bottom-0 left-0  bg-black opacity-0 transition-all z-40"
+            : "fixed top-0 right-[100%] bottom-0 left-0  bg-black duration-[300ms] opacity-10 transition-all z-40"
         }
         onClick={handleRightSlide}
       />
@@ -59,6 +59,7 @@ const HotelClient = ({ hotelsData }: { hotelsData: IHotel[] }) => {
             {hotelsData.map((hotel: IHotel) => (
               <HotelCard
                 description={hotel.description}
+                _id={hotel._id}
                 key={hotel.name}
                 address={hotel.address}
                 admin={hotel.admin}

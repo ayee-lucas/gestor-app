@@ -11,7 +11,6 @@ async function fetchHotels() {
 
   const hotels = await res.json();
 
-  console.log(hotels)
 
   return hotels;
 }

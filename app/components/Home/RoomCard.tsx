@@ -35,7 +35,6 @@ const RoomCard = ({
             description,
             available,
             image,
-            location,
             number,
             price,
             rating,
@@ -49,7 +48,7 @@ const RoomCard = ({
 
         <div
           onClick={() => setStatePop(!statePop)}
-          className="max-w-sm rounded overflow-hidden shadow-lg select-none cursor-pointer transition-all hover:-translate-y-2 hover:shadow-2xl
+          className="animate__animated  animate__fadeInUp max-w-sm rounded overflow-hidden shadow-lg select-none cursor-pointer transition-all hover:-translate-y-2 hover:shadow-2xl
            dark:hover:shadow-zinc-700 dark:hover:shadow-lg dark:border dark:border-zinc-600  dark:text-white"
         >
           <Image

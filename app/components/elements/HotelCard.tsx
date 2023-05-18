@@ -6,7 +6,8 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import Rating from "./Rating";
 import { IHotel } from "@/app/models/hotels";
 
-const HotelCard = ({ address, city, country, name, rating, rooms, description }: IHotel) => {
+const HotelCard = ({ address, city, country, name, rating, rooms, description, _id }: IHotel) => {
+
   const { handleRightSlide, setSelectedHotel } = useContext(HotelsContext);
 
   const handleClick = () => {
@@ -18,6 +19,7 @@ const HotelCard = ({ address, city, country, name, rating, rooms, description }:
       rating,
       rooms,
       description,
+      _id,
     });
 
     handleRightSlide();

@@ -4,8 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Rating from "../elements/Rating";
 import { IHotel } from "@/app/models/hotels";
-import { HotelsContext } from "@/app/(user)/Home/HotelClient";
-import HotelSlide from "../elements/HotelSlide";
+
 
 const HotelCardSm = ({
   name,
