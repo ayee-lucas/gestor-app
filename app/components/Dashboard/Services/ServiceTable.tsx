@@ -13,13 +13,18 @@ const ServiceTable = () => {
 
     const [addPopup, setAddPopup] = useState(false);
 
+    const [noData, setNoData] = useState(false);
+
     useEffect (() => {
         async function getServices() {
             const res = await fetch(`/api/Services/`, {
               next: {revalidate: 100}
             });
           
-            if (!res.ok) throw new Error(res.statusText);
+            if (!res.ok) { 
+                console.log(res)
+                setNoData(true);
+            }
           
             const services: Props[] = await res.json();
             setServices(services)
@@ -53,11 +58,11 @@ const ServiceTable = () => {
                                 </tr>
                             </thead>
 
-                            <tbody className="bg-white dark:bg-slate-800">
+                            {noData ? <div>No Data</div> : <tbody className="bg-white dark:bg-slate-800">
                                 {services.map((service: Props) => (
                                     <ServiceRow key={service.name} name={service.name} description={service.description} price={service.price} createdAt={service.createdAt} _id={service._id}  />
                                 ))}
-                            </tbody>
+                            </tbody> }
                         </table>
                     </div>
                 </div>

@@ -1,3 +1,5 @@
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 import React from "react";
 
 import { AiOutlineDelete } from "react-icons/ai";
@@ -17,9 +19,14 @@ const DeleteService = ({ setTrigger, _id, trigger }: DeleteServiceProps) => {
 
       const res = await fetch(`/api/Services/search/${id}`, {
         method: "DELETE",
+        cache: "no-store",
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
       if (res.status === 200) {
         setTrigger(false);
+        location.reload()
       }
     } catch (error) {
       console.log(error);
