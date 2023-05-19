@@ -5,17 +5,24 @@ import { EventViewContext, EventViewContextType } from "./Event";
 import DeleteEvent from "./DeleteEvent";
 import { IEvent } from "@/app/models/event";
 
+interface PropsRow extends IEvent {
+  _id?: any;
+}
 
-const EventRow = ({name, type, description, price, maxCapacity}:IEvent) => {
+
+const EventRow = ({name, type, description, price, maxCapacity, _id}:PropsRow) => {
   
   const { setMenu }:EventViewContextType = useContext(EventViewContext);
+  const [deletePopup, setDeletePopup] = useState(false);
 
   const handleMenu = (param:string) => {
     setMenu(param)
     console.log(param)
   } 
 
-  const [deletePopup, setDeletePopup] = useState(false);
+  const handleDelete = () => {
+    setDeletePopup(true);
+  };
 
   return (
     <tr>
@@ -56,10 +63,10 @@ const EventRow = ({name, type, description, price, maxCapacity}:IEvent) => {
             <button onClick={()=> handleMenu("Edit")} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Edit
             </button>
-            <button onClick={() => setDeletePopup(true)} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
+            <button onClick={handleDelete} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Delete
             </button>
-            <DeleteEvent trigger={deletePopup} setTrigger={setDeletePopup}/>
+            <DeleteEvent trigger={deletePopup} _id={_id} setTrigger={setDeletePopup}/>
         </div>
       </td>
     </tr>

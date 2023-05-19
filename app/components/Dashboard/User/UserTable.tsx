@@ -3,21 +3,30 @@ import UserRow from "./UserRow";
 import AddUser from "./AddUser";
 import { IUser } from "@/app/models/User";
 
+interface Props extends IUser{
+    _id?: any;
+}
+
 const UserTable = () => {
 
     const [users, setUsers] = useState<IUser[]>([]);
 
     const [addPopup, setAddPopup] = useState(false);
 
+    const [noData, setNoData] = useState(false);
+
     useEffect (() => {
         async function getUsers() {
-            const res = await fetch(`/api/User/listusers`, {
+            const res = await fetch(`/api/User/listusers/`, {
               next: {revalidate: 100}
             });
           
-            if (!res.ok) throw new Error(res.statusText);
+            if (!res.ok) {
+                console.log(res)
+                setNoData(true);
+            }
           
-            const users: IUser[] = await res.json();
+            const users: Props[] = await res.json();
             setUsers(users)
             console.log(users)
         }  
@@ -51,11 +60,13 @@ const UserTable = () => {
                                 </tr>
                             </thead>
 
-                            <tbody className="bg-white dark:bg-slate-800">
+                            {noData ? <div>No Data</div> : <tbody className="bg-white dark:bg-slate-800">
                                 {users.map((user: IUser) => (
                                     <UserRow key={user.username} name={user.name} surname={user.surname} username={user.username} email={user.email} role={user.role} _id={user._id}/>
                                 ))}
                             </tbody>
+
+                            }
                         </table>
                     </div>
                 </div>

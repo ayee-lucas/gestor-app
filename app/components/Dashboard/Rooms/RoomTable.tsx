@@ -3,11 +3,17 @@ import AddRoom from "./AddRoom";
 import RoomRow from "./RoomRow";
 import { IRoom } from "@/app/models/rooms";
 
+interface Props extends IRoom{
+    _id?: any;
+}
+
 const RoomTable = () => {
 
     const [rooms, setRooms] = useState<IRoom[]>([]);
 
     const [addPopup, setAddPopup] = useState(false);
+
+    const [noData, setNoData] = useState(false);
 
     useEffect (() => {
         async function getRooms() {
@@ -15,9 +21,12 @@ const RoomTable = () => {
               next: {revalidate: 100}
             });
           
-            if (!res.ok) throw new Error(res.statusText);
+            if (!res.ok){
+                console.log(res);
+                setNoData(true);
+            }
           
-            const rooms: IRoom[] = await res.json();
+            const rooms: Props[] = await res.json();
             setRooms(rooms)
             console.log(rooms)
         }  
@@ -50,8 +59,8 @@ const RoomTable = () => {
                             </thead>
 
                             <tbody className="bg-white dark:bg-slate-800">
-                                {rooms.map((room: IRoom) => (
-                                    <RoomRow key={room.number} number={room.number} type={room.type} description={room.description} price={room.price} rating={room.rating} shortDescription={room.shortDescription} image={room.image} available={room.available}/>
+                                {rooms.map((room: Props) => (
+                                    <RoomRow key={room.number} number={room.number} type={room.type} description={room.description} price={room.price} rating={room.rating} shortDescription={room.shortDescription} image={room.image} available={room.available} _id={room._id}/>
                                 ))}
                             </tbody>
                         </table>

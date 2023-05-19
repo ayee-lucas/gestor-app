@@ -3,11 +3,17 @@ import EventRow from "./EventRow";
 import AddEvent from "./AddEvent";
 import { IEvent } from "@/app/models/event";
 
+interface Props extends IEvent{
+    _id?: any;
+}
+
 const EventTable = () => {
 
     const [events, setEvents] = useState<IEvent[]>([]);
 
     const [addPopup, setAddPopup] = useState(false);
+
+    const [noData, setNoData] = useState(false);
 
     useEffect (() => {
         async function getEvents() {
@@ -15,9 +21,12 @@ const EventTable = () => {
               next: {revalidate: 100}
             });
           
-            if (!res.ok) throw new Error(res.statusText);
+            if (!res.ok) {
+                console.log(res);
+                setNoData(true);
+            }
           
-            const events: IEvent[] = await res.json();
+            const events: Props[] = await res.json();
             setEvents(events)
             console.log(events)
         }  
@@ -50,8 +59,8 @@ const EventTable = () => {
                             </thead>
 
                             <tbody className="bg-white dark:bg-slate-800">
-                                {events.map((event: IEvent) => (
-                                    <EventRow key={event.name} name={event.name} type={event.type} description={event.description} price={event.price} maxCapacity={event.maxCapacity} createdAt={event.createdAt}/>
+                                {events.map((event: Props) => (
+                                    <EventRow key={event.name} name={event.name} type={event.type} description={event.description} price={event.price} maxCapacity={event.maxCapacity} createdAt={event.createdAt} _id={event._id} />
                                 ))}
                             </tbody>
                         </table>

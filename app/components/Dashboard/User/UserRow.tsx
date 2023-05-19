@@ -5,17 +5,23 @@ import { UserViewContext, UserViewContextType } from "./User";
 import DeleteUser from "./DeleteUser";
 import { IUser } from "@/app/models/User";
 
+interface PropsRow extends IUser {
+  _id?: any;
+}
 
-const UserRow = ({name, surname, username, email, role, _id}:IUser) => {
+const UserRow = ({name, surname, username, email, role, _id}:PropsRow) => {
   
   const { setMenu }:UserViewContextType = useContext(UserViewContext);
+  const [deletePopup, setDeletePopup] = useState(false);
 
   const handleMenu = (param:string) => {
     setMenu(param)
     console.log(param)
   } 
 
-  const [deletePopup, setDeletePopup] = useState(false);
+  const handleDelete = () => {
+    setDeletePopup(true);
+  };
 
   return (
     <tr>
@@ -57,10 +63,10 @@ const UserRow = ({name, surname, username, email, role, _id}:IUser) => {
             <button onClick={()=> handleMenu("Edit")} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Edit
             </button>
-            <button onClick={() => setDeletePopup(true)} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
+            <button onClick={handleDelete} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Delete
             </button>
-            <DeleteUser trigger={deletePopup} setTrigger={setDeletePopup}/>
+            <DeleteUser trigger={deletePopup} _id={_id} setTrigger={setDeletePopup}/>
         </div>
       </td>
     </tr>

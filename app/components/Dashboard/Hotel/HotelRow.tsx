@@ -5,17 +5,24 @@ import { HotelViewContext, HotelViewContextType } from "./Hotel";
 import DeleteHotel from "./DeleteHotel";
 import { IHotel } from "@/app/models/hotels";
 
+interface PropsRow extends IHotel {
+  _id?: any;
+}
 
-const HotelRow = ({name, address, city, country, rating, _id}:IHotel) => {
+const HotelRow = ({name, address, city, country, rating, _id}:PropsRow) => {
   
   const { setMenu }:HotelViewContextType = useContext(HotelViewContext);
+
+  const [deletePopup, setDeletePopup] = useState(false);
 
   const handleMenu = (param:string) => {
     setMenu(param)
     console.log(param)
   } 
 
-  const [deletePopup, setDeletePopup] = useState(false);
+  const handleDelete = () => {
+    setDeletePopup(true);
+  };
 
   return (
     <tr>
@@ -53,10 +60,10 @@ const HotelRow = ({name, address, city, country, rating, _id}:IHotel) => {
             <button onClick={()=> handleMenu("Edit")} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Edit
             </button>
-            <button onClick={() => setDeletePopup(true)} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
+            <button onClick={handleDelete} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Delete
             </button>
-            <DeleteHotel trigger={deletePopup} setTrigger={setDeletePopup}/>
+            <DeleteHotel trigger={deletePopup} _id={_id} setTrigger={setDeletePopup}/>
         </div>
       </td>
     </tr>

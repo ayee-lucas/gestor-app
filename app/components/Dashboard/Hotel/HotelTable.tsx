@@ -3,11 +3,17 @@ import HotelRow from "./HotelRow";
 import AddHotel from "./AddHotel";
 import { IHotel } from "@/app/models/hotels";
 
+interface Props extends IHotel{
+    _id?: any;
+}
+
 const HotelTable = () => {
 
     const [hotels, setHotels] = useState<IHotel[]>([]);
 
     const [addPopup, setAddPopup] = useState(false);
+
+    const [noData, setNoData] = useState(false);
 
     useEffect (() => {
         async function getHotels() {
@@ -15,9 +21,12 @@ const HotelTable = () => {
               next: {revalidate: 100}
             });
           
-            if (!res.ok) throw new Error(res.statusText);
+            if (!res.ok) { 
+                console.log(res)
+                setNoData(true);
+            }
           
-            const hotels: IHotel[] = await res.json();
+            const hotels: Props[] = await res.json();
             setHotels(hotels)
             console.log(hotels)
         }  
@@ -51,7 +60,7 @@ const HotelTable = () => {
                             </thead>
 
                             <tbody className="bg-white dark:bg-slate-800">
-                                {hotels.map((hotel: IHotel) => (
+                                {hotels.map((hotel: Props) => (
                                     <HotelRow key={hotel.name} name={hotel.name} address={hotel.address} city={hotel.city} country={hotel.country} rating={hotel.rating} _id={hotel._id}/>
                                 ))}
                             </tbody>

@@ -5,17 +5,23 @@ import { RoomViewContext, RoomViewContextType } from "./Room";
 import DeleteRoom from "./DeleteRoom";
 import { IRoom } from "@/app/models/rooms";
 
+interface PropsRow extends IRoom {
+  _id?: any;
+}
 
-const RoomRow = ({number, type, price, rating, shortDescription, available}:IRoom) => {
+const RoomRow = ({number, type, price, rating, shortDescription, available, _id}:PropsRow) => {
   
   const { setMenu }:RoomViewContextType = useContext(RoomViewContext);
+  const [deletePopup, setDeletePopup] = useState(false);
 
   const handleMenu = (param:string) => {
     setMenu(param)
     console.log(param)
   } 
 
-  const [deletePopup, setDeletePopup] = useState(false);
+  const handleDelete = () => {
+    setDeletePopup(true);
+  };
 
   return (
     <tr>
@@ -56,10 +62,10 @@ const RoomRow = ({number, type, price, rating, shortDescription, available}:IRoo
             <button onClick={()=> handleMenu("Edit")} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Edit
             </button>
-            <button onClick={() => setDeletePopup(true)} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
+            <button onClick={handleDelete} className="text-indigo-600 dark:text-indigo-500 hover:text-indigo-900 dark:hover:text-gray-300">
                 Delete
             </button>
-            <DeleteRoom trigger={deletePopup} setTrigger={setDeletePopup}/>
+            <DeleteRoom trigger={deletePopup} _id={_id} setTrigger={setDeletePopup}/>
         </div>
       </td>
     </tr>
